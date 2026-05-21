@@ -1,5 +1,6 @@
 import './js/partials/header.js';
 import './js/partials/hero.js';
+import './js/partials/popular.js';
 import './js/partials/sweeties.js';
 import './js/partials/about-us.js';
 import './js/partials/feedback.js';
