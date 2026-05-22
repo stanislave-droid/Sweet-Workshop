@@ -1,12 +1,26 @@
 export function createMarkupForSelect(dataArray) {
-  return dataArray
-    .map(({ _id, name }, index) => `<option value="${_id}">${name}</option>`)
-    .join('');
+  const resultData = [
+    "<option value='' selected>Всі десерти</option>",
+    ...dataArray.map(
+      ({ _id, name }) => `<option value="${_id}">${name}</option>`
+    ),
+  ].join('');
+  return resultData;
 }
 
 export function createMarkupForCategoryButtons(dataArray) {
-  return dataArray
-    .map(
+  const resultData = [
+    `<label class="sweeties-category-label">
+          <input
+            type="radio"
+            value=""
+            name="sweeties-category-btn"
+            class="sweeties-category-radio-btn"
+            checked
+          />
+          <div class="sweeties-category-button">Всі десерти</div>
+        </label>`,
+    ...dataArray.map(
       ({ _id, name }) => `<label class="sweeties-category-label">
         <input
           type="radio"
@@ -16,6 +30,7 @@ export function createMarkupForCategoryButtons(dataArray) {
         />
         <div class="sweeties-category-button">${name}</div>
       </label>`
-    )
-    .join('');
+    ),
+  ].join('');
+  return resultData;
 }

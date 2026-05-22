@@ -8,30 +8,22 @@ import {
   createMarkupForSelect,
 } from '/js/exported/render-functions';
 import { getCategories, getDesserts } from '/js/exported/api';
-import { multiApiRequests } from '/js/exported/helpers';
+import SlimSelect from 'slim-select';
+import 'slim-select/styles';
 
-sweetiesCategorySelect.innerHTML =
-  "<option value='' selected>Всі десерти</option>";
-sweetiesCategoryList.innerHTML = `<label class="sweeties-category-label">
-        <input
-          type="radio"
-          value=""
-          name="sweeties-category-btn"
-          class="sweeties-category-radio-btn"
-          checked
-        />
-        <div class="sweeties-category-button">Всі десерти</div>
-      </label>`;
+getCategories()
+  .then(categories => {
+    const maped = categories.map(({ _id, name }) => {
+      return { text: name, value: _id };
+    });
+    const slimSelect = new SlimSelect({
+      select: '#sweeties-category-select',
+      data: [{ text: 'Всі десерти' }, ...maped],
+    });
 
-multiApiRequests(getCategories, getDesserts)
-  .then(([getCategories, getDesserts]) => {
-    sweetiesCategorySelect.insertAdjacentHTML(
-      'beforeend',
-      createMarkupForSelect(getCategories)
-    );
     sweetiesCategoryList.insertAdjacentHTML(
       'beforeend',
-      createMarkupForCategoryButtons(getCategories)
+      createMarkupForCategoryButtons(categories)
     );
   })
   .catch(error => {
@@ -39,4 +31,12 @@ multiApiRequests(getCategories, getDesserts)
   })
   .finally(() => {
     sweetiesCategoryLoader.hidden = true;
+    sweetiesCategorySelect.hidden = false;
   });
+
+getDesserts()
+  .then(desserts => {})
+  .catch(error => {
+    console.log(error);
+  })
+  .finally(() => {});

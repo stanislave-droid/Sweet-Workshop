@@ -17,6 +17,11 @@
   display: block;
 }
 
+.sweeties-category-select .ss-main {
+  background: #ebfcfb;
+  color: #080c0c;
+}
+
 .sweeties-category-list {
   display: flex;
   justify-content: center;
