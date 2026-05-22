@@ -2,6 +2,7 @@
   position: relative;
   background: #f5fdfd;
   color: #080C0C;
+  z-index: 1;
 }
 
 .header-menu {
@@ -9,6 +10,7 @@
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
+  background: #f5fdfd;
 }
 
 .header-menu__logo {
@@ -19,7 +21,6 @@
 }
 
 .header-menu__links {
-  display: block;
   position: absolute;
   top: -100vh;
   left: 0;
@@ -27,11 +28,50 @@
   bottom: 0;
   height: calc(100vh - 100%);
 
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+
+  padding: 16px 20px;
+
   background: #f5fdfd;
   z-index: -1;
   opacity: 0;
 
   transition: top 250ms ease-out, opacity 250ms ease-out;
+
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+}
+
+.header-menu__link{
+  display: block;
+  padding: 12px 0;
+
+  transition: color 100ms ease-out;
+
+  &:hover, &:focus {
+    color: #F19898;
+  }
+}
+
+.header-menu__button-link {
+  display: block;
+  margin-top: 28px;
+  padding: 8px 20px;
+
+  border: 2px solid transparent;
+  border-radius: 100px;
+  background: #F19898;
+
+  text-align: center;
+  transition: border-color 100ms ease-out, background 100ms ease-out;
+
+  &:hover, &:focus {
+    background: transparent;
+    border: 2px solid #080c0c;
+  }
 }
 
 .header--open .header-menu__links {
@@ -58,7 +98,15 @@
   fill: currentColor;
 }
 
+.header--open .header-menu__button-icon--open {
+  display: none;
+}
+
 .header-menu__button-icon--close {
   display: none;
   fill: currentColor;
+}
+
+.header--open .header-menu__button-icon--close {
+  display: block;
 }
