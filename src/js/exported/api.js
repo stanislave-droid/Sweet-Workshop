@@ -29,7 +29,7 @@ export async function getDessert(id) {
   return response.data;
 }
 
-export async function getFeedbacks(limit = 10, page = 1) {
+export async function getFeedbacks(page = 1, limit = 10) {
   const parameters = {
     params: {
       page: page,
