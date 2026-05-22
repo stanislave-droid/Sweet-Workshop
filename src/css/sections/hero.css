@@ -1,12 +1,14 @@
 /* ==========================================================================
-   HERO SECTION (Mobile First - За замовчуванням для всіх екранів)
+   HERO SECTION (Mobile First - Базова мобільна версія для екранів від 320px)
    ========================================================================== */
 
 .hero {
-  width: 100%; /* Картинка і затемнення завжди займатимуть 100% ширини екрана */
+  width: 100%;
+  margin: 0 auto;
+
+  /* Точні симетричні відступи від краю секції до контенту (155.5px округлюємо до 156px) */
   padding-top: 156px;
   padding-bottom: 156px;
-  margin: 0 auto;
 
   background-repeat: no-repeat;
   background-position: center;
@@ -16,7 +18,7 @@
     url(/img/hero/hero-mob-1x.jpg);
 }
 
-/* Ретина для мобільних */
+/* Підтримка чітких зображень на Retina-екранах (2x) */
 @media screen and (min-resolution: 2x), (-webkit-min-device-pixel-ratio: 2) {
   .hero {
     background-image:
@@ -25,60 +27,70 @@
   }
 }
 
-/* Обмежувач контенту, щоб текст не розповзався */
-.hero > .container {
-  max-width: 375px;
-  margin: 0 auto;
-  padding: 0 20px;
+/* Зв'язка з твоїм HTML-класом і глобальним контейнером */
+.container.hero-container {
+  /* Бокові падінги по 16px підхопляться автоматично з вашого глобального .container */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Центрує заголовок, текст і кнопку по горизонталі */
 }
 
 .hero-title {
-  font-family: 'Comfortaa', sans-serif;
+  /* font-family: 'Comfortaa' підхоплюється з базових стилів h1, h2 */
   font-weight: 700;
   font-size: 40px;
   line-height: 1.2;
   letter-spacing: -0.01em;
   text-align: center;
-  color: #fff;
-  margin-bottom: 24px;
+  color: #ffffff;
+
+  margin-top: 0; /* Скидаємо дефолтні марджини браузера */
+  margin-bottom: 24px; /* Ідеальний відступ до тексту з твого макета */
 }
 
 .hero-text {
+  /* font-family: 'Work Sans' та line-height: 1.5 спадкуються від body */
   font-weight: 400;
   font-size: 18px;
-  line-height: 1.5;
   text-align: center;
-  color: #fff;
+  color: #ffffff;
+
+  /* Обмежуємо ширину тексту, щоб слова переносилися точно як у дизайнера */
   max-width: 335px;
+  margin-top: 0;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 32px;
+  margin-bottom: 32px; /* Ідеальний точний відступ до кнопки */
 }
 
 /* Кнопка-посилання */
 .hero-link {
   display: block;
-  width: 335px;
+  width: 100%; /* На маленьких екранах адаптивно розтягується */
+  max-width: 335px; /* Але не стає більшою за ліміт у 335px з макета */
   height: 44px;
-  padding: 10px 24px;
-  margin: 0 auto;
+  padding: 10px 24px; /* Падінг з урахуванням border: 2px дає сумарну висоту рівно 44px */
 
-  color: #080c0c;
+  /* Шрифтові стилі чітко з UI-кіту */
+  font-family: 'Work Sans', sans-serif;
   font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
   text-align: center;
   text-decoration: none;
+  color: #080c0c;
 
   background-color: #f19898;
-  border: 2px solid transparent; /* Резервуємо місце під рамку, щоб кнопка не смикалася */
+  border: 2px solid transparent; /* Резерв під рамку, щоб кнопка не «стрибала» при кліку */
   border-radius: 100px;
 
-  /* Плавна анімація для всіх комп'ютерів та телефонів */
+  /* Плавні переходи для гарного тачу на смартфонах */
   transition:
     background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
     border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Стан при кліку/тапі (працює всюди) */
+/* Ефект миттєвого відгуку при натисканні пальцем на екрані телефона (Active з UI-кіту) */
 .hero-link:active {
   background-color: #c07979;
   border-color: #080c0c;
@@ -88,18 +100,23 @@
    TABLET STYLES (Для екранів від 768px і БІЛЬШЕ)
    ========================================================================== */
 
-@media only screen and (min-width: 768px) {
+/* ==========================================================================
+   TABLET STYLES (Для планшетних екранів від 768px до 1199px)
+   ========================================================================== */
+
+@media screen and (min-width: 768px) {
   .hero {
+    /* Абсолютно точні відступи з вашого макета */
     padding-top: 325px;
     padding-bottom: 325px;
 
-    /* Змінюємо картинку на планшетну */
+    /* Перемикаємо фонову картинку на планшетну версію */
     background-image:
       linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
       url(/img/hero/hero-tab-1x.jpg);
   }
 
-  /* Ретина для планшетів */
+  /* Підтримка чітких зображень на планшетних Retina-екранах */
   @media (min-resolution: 2x), (-webkit-min-device-pixel-ratio: 2) {
     .hero {
       background-image:
@@ -108,63 +125,75 @@
     }
   }
 
-  .hero > .container {
-    max-width: 768px; /* Контейнер стає ширшим */
-    padding: 0 32px;
+  .hero-title {
+    /* Обмежуємо максимальну ширину контенту по центру, як заклав дизайнер */
+    max-width: 524px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
-  .hero-title,
   .hero-text {
-    max-width: 704px;
+    max-width: 524px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
-  /* --- ХОВЕРИ ДЛЯ ВСІХ ВЕЛИКИХ ЕКРАНІВ (ноутбуки, монітори, планшети з мишкою) --- */
-  /* Винесли сюди, щоб ховер працював на будь-якому десктопному розширенні */
+  /* --- ЕФЕКТИ ХОВЕРУ ТА ФОКУСУ (Вмикаються на планшетах/ноутбуках, де є мишка) --- */
   .hero-link:hover,
   .hero-link:focus {
-    background-color: #f19898;
-    border-color: #080c0c; /* З'являється темна рамка 2px з UI кіту */
-    outline: none;
+    background-color: #f19898; /* Колір залишається базовим рожевим */
+    border-color: #080c0c; /* З'являється темний контур з UI-кіту */
+    outline: none; /* Прибираємо дефолтну рамку браузера */
     cursor: pointer;
   }
-}
 
+  /* Ефект при кліку мишкою на комп'ютері */
+  .hero-link:active {
+    background-color: #c07979; /* Кнопка темнішає */
+    border-color: #080c0c;
+  }
+}
 /* ==========================================================================
    DESKTOP STYLES (Для великих моніторів від 1440px)
    ========================================================================== */
 
-@media only screen and (min-width: 1440px) {
+/* ==========================================================================
+   DESKTOP STYLES (Для десктопних екранів від 1200px і більше)
+   ========================================================================== */
+
+@media screen and (min-width: 1200px) {
   .hero {
+    max-width: none;
+    width: 100%;
+
+    /* Ставимо точні 306px з офіційних налаштувань фрейму у Figma */
     padding-top: 306px;
     padding-bottom: 306px;
 
-    /* Змінюємо картинку на десктопну */
     background-image:
       linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
       url(/img/hero/hero-desc-1x.jpg);
   }
 
-  .hero > .container {
-    max-width: 1440px;
-    padding: 0 64px;
+  /* Ретина для десктопів */
+  @media (min-resolution: 2x), (-webkit-min-device-pixel-ratio: 2) {
+    .hero {
+      background-image:
+        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url(/img/hero/hero-desc-2x.jpg);
+    }
   }
 
   .hero-title {
-    font-size: 56px; /* Збільшуємо шрифт як на десктоп макеті */
-    max-width: 1312px;
+    font-size: 56px;
+    max-width: 768px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .hero-text {
-    max-width: 1312px;
-  }
-}
-
-/* Ретина для десктопів */
-@media only screen and (min-width: 1440px) and (min-resolution: 2x),
-  only screen and (min-width: 1440px) and (-webkit-min-device-pixel-ratio: 2) {
-  .hero {
-    background-image:
-      linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-      url(/img/hero/hero-desc-2x.jpg);
+    max-width: 768px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
