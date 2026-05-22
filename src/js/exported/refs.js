@@ -1,5 +1,7 @@
 export const refs = {
   container: document.getElementById('feedbacks-container'),
+  headerMenu: document.querySelector(".header"),
+  headerMenuButton: document.querySelector("#header-menu-button"),
 };
 export const sweetiesCategoryList = document.querySelector(
   '.sweeties-category-list'

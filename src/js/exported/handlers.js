@@ -3,6 +3,7 @@ import {
   sweetiesLoadMoreBtn,
   sweetiesCategoryLoader,
   sweetiesDessertsLoader,
+  refs,
 } from '/js/exported/refs';
 import { getDesserts } from '/js/exported/api';
 import { createDessertsMarkup } from '/js/exported/render-functions';
@@ -63,4 +64,18 @@ export function onLoadMoreBtn() {
       sweetiesDessertsLoader.hidden = true;
       sweetiesLoadMoreBtn.disabled = false;
     });
+}
+
+export function handleHeaderMenuEscape(ev) {
+  if (ev.key === "Escape") {
+    refs.headerMenu.classList.remove('header--open');
+  }
+}
+
+export function handleHeaderMenuClick(ev) {
+  if (ev.target.closest("button") === refs.headerMenuButton) {
+    refs.headerMenu.classList.toggle('header--open');
+  } else if (ev.target.closest("a")) {
+    refs.headerMenu.classList.remove('header--open');
+  }
 }
