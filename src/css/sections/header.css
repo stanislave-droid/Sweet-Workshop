@@ -101,8 +101,32 @@
 
   transition: color 100ms ease-out;
 
+  &::after {
+    content: '';
+
+    position: relative;
+    top: 4px;
+
+    display: block;
+    width: 100%;
+    opacity: 0;
+
+    border-bottom: 1px solid currentColor;
+    transition: top 100ms ease-out, opacity 100ms ease-out;
+  }
+
   &:hover, &:focus {
+    &::after {
+      opacity: 1;
+    }
+  }
+
+  &:active {
     color: #F19898;
+
+    &::after {
+      top: 0px;
+    }
   }
 }
 
@@ -127,6 +151,10 @@
   &:hover, &:focus {
     background: transparent;
     border: 2px solid #080c0c;
+  }
+
+  &:active {
+    background: #F5B6B6;
   }
 }
 
