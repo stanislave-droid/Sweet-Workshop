@@ -1,5 +1,108 @@
 .order-modal-overlay {
+  position: fixed;
+  inset: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgba(0, 0, 0, 0.4);
+
+  opacity: 1;
+  visibility: visible;
+
+  transition: opacity 250ms ease, visibility 250ms ease;
 }
 
 .order-modal {
+  position: relative;
+
+  width: 100%;
+  max-width: 343px;
+
+  padding: 48px 16px;
+
+  border-radius: 32px;
+
+  background-color: #f2f6f6;
+}
+
+.order-modal-close-btn {
+  position: absolute;
+
+  top: 16px;
+  right: 16px;
+
+  border: none;
+  background-color: transparent;
+}
+
+.order-modal-title {
+  margin-bottom: 32px;
+
+  text-align: center;
+}
+
+.order-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.order-form-label {
+  display: flex;
+  flex-direction: column;
+
+  margin-bottom: 16px;
+
+  font-size: 14px;
+}
+
+.order-form-input,
+.order-form-textarea {
+  margin-top: 8px;
+  padding: 12px;
+
+  border: 1px solid #080c0c;
+  border-radius: 8px;
+
+  background-color: transparent;
+
+  outline: transparent;
+
+  transition: border-color 250ms ease;
+}
+
+.order-form-input:focus,
+.order-form-textarea:focus {
+  border-color: #efa69d;
+}
+
+.order-form-textarea {
+  min-height: 120px;
+  resize: none;
+}
+
+.order-form-submit-btn {
+  align-self: center;
+
+  min-width: 160px;
+  height: 44px;
+
+  border: none;
+  border-radius: 100px;
+
+  background-color: #efa69d;
+
+  transition: background-color 250ms ease, transform 250ms ease;
+}
+
+.order-form-submit-btn:hover,
+.order-form-submit-btn:focus {
+  background-color: #e58d82;
+}
+
+.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
