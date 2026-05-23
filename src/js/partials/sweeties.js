@@ -11,15 +11,20 @@ import { getCategories, getDesserts } from '/js/exported/api';
 import SlimSelect from 'slim-select';
 import 'slim-select/styles';
 
+const slimSelect = new SlimSelect({
+  select: sweetiesCategorySelect,
+  settings: {
+    showSearch: false,
+    openPosition: 'down',
+  },
+});
+
 getCategories()
   .then(categories => {
-    const maped = categories.map(({ _id, name }) => {
-      return { text: name, value: _id };
-    });
-    const slimSelect = new SlimSelect({
-      select: '#sweeties-category-select',
-      data: [{ text: 'Всі десерти' }, ...maped],
-    });
+    slimSelect.setData([
+      { text: 'Всі десерти', class: 'sw-cat-select-item' },
+      ...createMarkupForSelect(categories),
+    ]);
 
     sweetiesCategoryList.insertAdjacentHTML(
       'beforeend',

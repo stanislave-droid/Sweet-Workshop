@@ -1,7 +1,7 @@
 export function createMarkupForSelect(dataArray) {
-  const resultData = dataArray
-    .map(({ _id, name }) => `<option value="${_id}">${name}</option>`)
-    .join('');
+  const resultData = dataArray.map(({ _id, name }) => {
+    return { text: name, value: _id, class: 'sw-cat-select-item' };
+  });
   return resultData;
 }
 
