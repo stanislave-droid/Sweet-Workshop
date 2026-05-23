@@ -20,22 +20,27 @@
     position: relative;
     padding-bottom: 48px;
   }
-  .feedback-slider {
-    width: 100%;
-    overflow: hidden;
-  }
 
   .swiper-slide {
     border: 2px solid #080c0c;
     border-radius: 16px;
     padding: 32px;
-
+    display: flex !important;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
     height: 233px !important;
+  }
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
   }
   .feedback-text {
     font-family: 'Work Sans', sans-serif;
     font-weight: 400;
-    width: 357px;
+    max-width: 357px;
     font-size: 18px;
     line-height: 1.5;
     color: #080c0c;
@@ -43,76 +48,90 @@
   .feedback-user-name {
     font-family: 'Work Sans', sans-serif;
     font-weight: 600;
-
     font-size: 16px;
     line-height: 1.5;
     color: #080c0c;
+    margin-top: auto;
   }
+
   .feedback-arrow {
-    position: absolute;
-    top: 50%;
-    /* Вирівнюємо строго по центру та ховаємо на 50% ширини кнопки */
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: #ffffff;
-    border: 1px solid #111111; /* Твій контур з макету */
-    /* display: flex;
+    display: flex;
     align-items: center;
-    justify-content: center; */
-    cursor: pointer;
+    justify-content: center;
+    flex-direction: row;
+    gap: 8px;
+    border: 2px solid #080c0c;
+    border-radius: 100px;
+    padding: 12px;
+    width: 48px;
+    height: 48px;
+    position: absolute;
+    background-color: #f5fdfd;
     z-index: 10;
   }
-  /* .swiper-button-prev {
-    left: 0;
-    transform: translate(-50%, -50%);
-  } */
-  .swiper-button-next::after,
-  .swiper-button-prev::after {
-    display: none !important;
-  }
-  .swiper-button-next,
   .swiper-button-prev {
-    position: static !important;
-    margin: 0 !important;
+    left: -25px;
+  }
+  .swiper-button-next {
+    right: -25px;
   }
   .arrow-icon {
-    fill: #111111;
-    transition: fill 0.2s ease;
+    stroke: #080c0c;
+    width: 24px;
+    height: 24px;
   }
+
   .feedback-arrow:hover {
-    background-color: #111111;
-  }
-  .feedback-arrow:hover .arrow-icon {
-    fill: #ffffff;
+    background-color: #f19898;
   }
 
   .feedback-arrow:active {
-    transform: scale(0.95);
+    background-color: #c07979;
+  }
+  .swiper-button-disabled {
+    background: #f5fdfd;
+    opacity: 0.2;
   }
 
-  .swiper-button-disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
-    background-color: #f5f5f5;
+  .feedback-arrow.swiper-button-disabled {
+    opacity: 1 !important;
+    border-color: #cccccc !important;
+    background-color: #f5fdfd !important;
   }
-  /* .swiper-pagination {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 8px;
+  .feedback-arrow.swiper-button-disabled .arrow-icon {
+    stroke: #cccccc !important;
+  }
+  .swiper-pagination {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    gap: 9px;
+    align-items: center !important;
+    width: 100% !important;
+    left: 0 !important;
   }
   .swiper-pagination-bullet {
     width: 8px;
     height: 8px;
-    border-radius: 50%;
-    background-color: #b0b0b0; /* Сірі неактивні крапки */
-  /* cursor: pointer;
+    border-radius: 100%;
+    background-color: #b0b0b0;
+    cursor: pointer;
+    opacity: 1;
     transition: background-color 0.3s ease;
   }
   .swiper-pagination-bullet-active {
-    background-color: #0076f6;
-  } */
+    background-color: #000;
+  }
+  .raty-stars {
+    display: flex;
+    flex-direction: row;
+    gap: 4px; /* Расстояние между звездами */
+    margin-bottom: 16px; /* Отступ от звезд до текста отзыва */
+  }
+
+  .raty-stars img {
+    width: 20px;
+    height: 20px;
+    display: block;
+  }
 }

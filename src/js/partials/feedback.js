@@ -9,6 +9,7 @@ import { ApiBaseURL } from '../exported/constants';
 axios.defaults.baseURL = ApiBaseURL;
 
 function createCardMarkup(item) {
+  console.log(item.rate);
   return `
     <div class="swiper-slide feedback-card">
       <div class="card-content">
@@ -40,8 +41,6 @@ async function renderFeedbackSection() {
       .join('');
 
     initFeedbackSlider();
-
-    initLibraryStars();
   } catch (error) {
     console.error(error);
     container.innerHTML =
@@ -49,15 +48,20 @@ async function renderFeedbackSection() {
   }
 }
 
+import starEmpty from '../../img/feedback/star-empty.svg?url';
+import starFull from '../../img/feedback/star-full.svg?url';
+import starHalf from '../../img/feedback/star-half.svg?url';
 function initLibraryStars() {
   document.querySelectorAll('.raty-stars').forEach(el => {
     const score = parseFloat(el.getAttribute('data-score'));
 
     new Raty(el, {
-      score: score,
+      score,
       readOnly: true,
       halfShow: true,
-      starType: 'svg',
+      starOn: starFull,
+      starOff: starEmpty,
+      starHalf: starHalf,
     });
   });
 }
@@ -65,10 +69,12 @@ function initLibraryStars() {
 function initFeedbackSlider() {
   new Swiper('.feedback-slider', {
     modules: [Navigation, Pagination],
+    direction: 'horizontal',
     spaceBetween: 24,
     slidesPerView: 3,
     grabCursor: true,
-
+    observer: true,
+    observeParents: true,
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
@@ -78,6 +84,11 @@ function initFeedbackSlider() {
       clickable: true,
       dynamicBullets: true,
       dynamicMainBullets: 4,
+    },
+    on: {
+      init: function () {
+        initLibraryStars();
+      },
     },
   });
 }
