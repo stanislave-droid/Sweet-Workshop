@@ -71,7 +71,7 @@
 }
 
 @media screen and (min-width: 1440px) {
-  #sweeties-category-select {
+  .sw-cat-select + .ss-main {
     position: absolute;
     opacity: 0;
     visibility: hidden;

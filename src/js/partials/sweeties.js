@@ -31,7 +31,6 @@ getCategories()
   })
   .finally(() => {
     sweetiesCategoryLoader.hidden = true;
-    sweetiesCategorySelect.hidden = false;
   });
 
 getDesserts()
