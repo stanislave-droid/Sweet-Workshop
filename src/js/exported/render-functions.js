@@ -40,8 +40,8 @@ export function createDessertsMarkup(desserts, classes) {
     .map(dessert => {
       return `
       <li data-id="${dessert._id}" class="${classes.li}">
-        <img src="${dessert.image}" alt="${dessert.name}" class="${classes.img}" >
         <div class="${classes.content}">
+        <img src="${dessert.image}" alt="${dessert.name}" class="${classes.img}" >
           <div class="${classes.contentHeader}">
             <p class="${classes.category}">${dessert.category.name}</p>
             <div class="${classes.nameWrapper}">
@@ -51,7 +51,7 @@ export function createDessertsMarkup(desserts, classes) {
           </div>
           <div class="${classes.priceWrapper}">
             <p class="${classes.price}">${dessert.price} грн</p>
-            <button class="${classes.button}">
+            <button class="${classes.button}" data-button=btn>
               <svg class="${classes.svg}" width="24" height="24">
                 <use href="/img/icons.svg#icon-arrow_outward"></use>
               </svg>

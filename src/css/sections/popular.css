@@ -1,2 +1,140 @@
-.popular {
+@media screen and (min-width: 320px) {
+  .popular-title {
+    padding-bottom: 32px;
+  }
+
+  .popular-card {
+    border: 1px solid #080c0c;
+    border-radius: 16px;
+    padding: 16px;
+    background: #f5fdfd;
+    width: 344 px;
+  }
+
+  .popular-list {
+    margin-bottom: 24px;
+  }
+
+  .popular-img {
+    display: block;
+    object-fit: cover;
+    border-radius: 8px;
+    width: 303px;
+    height: 227px;
+    margin-bottom: 16px;
+  }
+
+  .popular-paragraph,
+  .popular-description {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+
+  .popular-paragraph {
+    margin-bottom: 12px;
+  }
+
+  .popular-name {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 4px;
+  }
+
+  .popular-content-header {
+    width: 303px;
+    height: 106px;
+    margin-bottom: 8px;
+  }
+
+  .popular-price-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .popular-price {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 1.5;
+  }
+
+  .popular-button,
+  .navigation-next,
+  .navigation-previus {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #080c0c;
+    border-radius: 100px;
+    padding: 10px;
+    width: 44px;
+    height: 44px;
+    fill: #080c0c;
+  }
+
+  .swiper-settings {
+    display: flex;
+    justify-content: right;
+  }
+
+  .swiper-navigation {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .popular-button:hover,
+  .navigation-previus:hover,
+  .navigation-next:hover,
+  .popular-button:focus,
+  .navigation-previus:focus,
+  .navigation-next:focus {
+    background-color: #f19898;
+  }
+
+  .navigation-previus.swiper-button-disabled,
+  .navigation-next.swiper-button-disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  .swiper-pagination {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 24px;
+  }
+
+  .popular-bullet {
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 4px;
+    background-color: #080c0c;
+    opacity: 0.2;
+  }
+
+  .popular-bullet-active {
+    opacity: 1;
+  }
+}
+
+/* ----TABLET--- */
+
+@media screen and (min-width: 768px) {
+  .popular-img {
+    width: 312px;
+    height: 234px;
+  }
+}
+
+/* ---Desktop--- */
+
+@media screen and (min-width: 1440px) {
+  .popular-img {
+    width: 389px;
+    height: 292px;
+  }
 }

@@ -52,3 +52,16 @@ export async function postOrder({ name, phone, dessertId, comment }) {
   const response = await axios.post(ApiParticles[2], formData);
   return response.data;
 }
+
+export async function getPopularDesserts(page = 1) {
+  const parameters = {
+    params: {
+      page: page,
+      limit: limit,
+      type:"popular"
+    },
+  };
+
+  const response = await axios.get(ApiParticles[0], parameters);
+  return response.data;
+}
