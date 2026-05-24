@@ -16,14 +16,13 @@
   width: 20px !important;
   height: 20px !important;
   flex-shrink: 0;
-  display: block;
 }
 
 .feedback-slider-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  max-width: 335px;
+  /* max-width: 375px; */
   margin-top: 40px;
   position: relative;
   padding-bottom: 80px;
@@ -139,7 +138,7 @@
 /* Styles for Tablet devices */
 @media only screen and (min-width: 768px) {
   .feedback-slider-container {
-    max-width: 704px;
+    /* max-width: 768px; */
     padding-bottom: 48px;
   }
   .swiper-slide {
@@ -173,9 +172,9 @@
 }
 
 /* Styles for Desktop devices */
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1440px) {
   .feedback-slider-container {
-    max-width: 1312px;
+    /* max-width: 1312px; */
     margin-top: 80px;
   }
   .feedback-text {
