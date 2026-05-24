@@ -7,6 +7,7 @@ import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+// import {showError} from `../exported/helpers`
 
 const classes = {
   li: 'popular-card swiper-slide',
@@ -23,7 +24,8 @@ const classes = {
   content: 'popular-content',
 };
 
-// SHOW LOADER
+const loader = document.querySelector('.popular-loader');
+loader.classList.remove('hidden');
 
 getPopularDesserts()
   .then(({ desserts }) => {
@@ -32,36 +34,7 @@ getPopularDesserts()
       'beforeend',
       createDessertsMarkup(desserts, classes)
     );
-
-    const swiper = new Swiper('.swiper', {
-      modules: [Pagination, Navigation],
-      slidesPerGroup: 1,
-      cssMode: true,
-      nested: true,
-      spaceBetween: 24,
-      navigation: {
-        nextEl: '.navigation-next',
-        prevEl: '.navigation-previus',
-      },
-      pagination: {
-        el: '.swiper-pagination',
-        bulletClass: 'popular-bullet',
-        bulletActiveClass: 'popular-bullet-active',
-      },
-      breakpoints: {
-        375: {
-          slidesPerView: 1,
-        },
-        768: {
-          slidesPerView: 2,
-          spaceBetween: 16,
-        },
-        1440: {
-          slidesPerView: 3,
-          spaceBetween: 24,
-        },
-      },
-    });
+    runSwiper()
 
     //---- event---
 
@@ -77,8 +50,40 @@ getPopularDesserts()
     }
   })
   .catch(error => {
-    console.log(error.message);
+    // showError(error.message);
   })
   .finally(() => {
-    // LOADER - HIDE
+    loader.classList.add('hidden');
   });
+
+function runSwiper() {
+  const swiper = new Swiper('.swiper', {
+    modules: [Pagination, Navigation],
+    slidesPerGroup: 1,
+    cssMode: true,
+    nested: true,
+    spaceBetween: 24,
+    navigation: {
+      nextEl: '.navigation-next',
+      prevEl: '.navigation-previus',
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      bulletClass: 'popular-bullet',
+      bulletActiveClass: 'popular-bullet-active',
+    },
+    breakpoints: {
+      375: {
+        slidesPerView: 1,
+      },
+      768: {
+        slidesPerView: 2,
+        spaceBetween: 16,
+      },
+      1440: {
+        slidesPerView: 3,
+        spaceBetween: 24,
+      },
+    },
+  });
+}
