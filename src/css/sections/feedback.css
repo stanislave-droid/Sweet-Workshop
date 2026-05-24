@@ -6,18 +6,17 @@
 .feedback-subtitle {
   text-align: center;
 }
-
-.raty-stars {
-  display: flex !important;
+.feedback-stars {
+  display: flex;
+  gap: 4px;
   margin-bottom: 24px;
-  line-height: 1;
-  overflow: hidden;
-  flex-shrink: 0;
-  cursor: default !important;
-  background: url('../../img/feedback/star-empty.svg') !important;
 }
-.raty-stars .star-value {
-  background: url('../../img/feedback/star-full.svg') !important;
+
+.feedback-stars svg {
+  width: 20px !important;
+  height: 20px !important;
+  flex-shrink: 0;
+  display: block;
 }
 
 .feedback-slider-container {
@@ -94,17 +93,16 @@
 }
 .swiper-button-disabled {
   background: #f5fdfd;
-  opacity: 0.2;
 }
 
 .feedback-arrow.swiper-button-disabled {
-  opacity: 1 !important;
   border-color: #cccccc !important;
   background-color: #f5fdfd !important;
 }
 .feedback-arrow.swiper-button-disabled .arrow-icon {
   stroke: #cccccc !important;
 }
+
 .swiper-button-next {
   right: 0 !important;
 }
