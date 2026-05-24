@@ -6,132 +6,187 @@
 .feedback-subtitle {
   text-align: center;
 }
+
+.raty-stars {
+  display: flex !important;
+  margin-bottom: 24px;
+  line-height: 1;
+  overflow: hidden;
+  flex-shrink: 0;
+  cursor: default !important;
+  background: url('../../img/feedback/star-empty.svg') !important;
+}
+.raty-stars .star-value {
+  background: url('../../img/feedback/star-full.svg') !important;
+}
+
+.feedback-slider-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 335px;
+  margin-top: 40px;
+  position: relative;
+  padding-bottom: 80px;
+}
+.swiper-slide {
+  border: 2px solid #080c0c;
+  border-radius: 16px;
+  padding: 32px;
+  display: flex !important;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 209px !important;
+}
+.card-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+.feedback-text {
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 400;
+  max-width: 271px;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #080c0c;
+}
+.feedback-user-name {
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #080c0c;
+  margin-top: auto;
+}
+
+.swiper-slide {
+  height: 209px !important;
+}
+.feedback-text {
+  max-width: 271px;
+}
+
+.feedback-arrow {
+  bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 8px;
+  border: 2px solid #080c0c;
+  border-radius: 100px;
+  padding: 12px;
+  width: 48px;
+  height: 48px;
+  position: absolute;
+  background-color: #f5fdfd;
+}
+
+.feedback-arrow:hover {
+  background-color: #f19898;
+}
+
+.feedback-arrow:active {
+  background-color: #c07979;
+}
+.swiper-button-disabled {
+  background: #f5fdfd;
+  opacity: 0.2;
+}
+
+.feedback-arrow.swiper-button-disabled {
+  opacity: 1 !important;
+  border-color: #cccccc !important;
+  background-color: #f5fdfd !important;
+}
+.feedback-arrow.swiper-button-disabled .arrow-icon {
+  stroke: #cccccc !important;
+}
+.swiper-button-next {
+  right: 0 !important;
+  /* left: auto !important; */
+}
+
+.swiper-button-prev {
+  right: 64px !important;
+  /* left: auto !important; */
+}
+.arrow-icon {
+  stroke: #080c0c;
+  width: 24px;
+  height: 24px;
+}
+
+.swiper-pagination {
+  /* position: absolute !important; */
+  margin-left: 10px;
+  /* top: 50%; */
+  transform: translateY(-450%);
+  display: flex !important;
+  /* flex-direction: row !important;
+  justify-content: center !important; */
+  gap: 9px;
+  /* align-items: center !important; */
+  width: 100% !important;
+  /* left: 0 !important; */
+}
+.swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  border-radius: 100%;
+  background-color: #b0b0b0;
+  cursor: pointer;
+  opacity: 1;
+  transition: background-color 0.3s ease;
+}
+.swiper-pagination-bullet-active {
+  background-color: #000;
+}
 /* Styles for Tablet devices */
 @media only screen and (min-width: 768px) {
+  .feedback-slider-container {
+    max-width: 704px;
+    padding-bottom: 48px;
+  }
+  .swiper-slide {
+    padding: 16px;
+    height: 233px !important;
+  }
+  .feedback-text {
+    max-width: 187px;
+  }
+  .feedback-arrow {
+    bottom: 0;
+    z-index: 10;
+  }
+  .swiper-button-prev {
+    top: 92px;
+    left: -30px;
+  }
+  .swiper-button-next {
+    top: 92px;
+    right: -30px !important;
+  }
+
+  .swiper-pagination {
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin-left: 0;
+    left: 0 !important;
+    transform: none;
+  }
 }
 /* Styles for Desktop devices */
 @media only screen and (min-width: 1200px) {
   .feedback-slider-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     max-width: 1312px;
     margin-top: 80px;
-    position: relative;
-    padding-bottom: 48px;
-  }
-
-  .swiper-slide {
-    border: 2px solid #080c0c;
-    border-radius: 16px;
-    padding: 32px;
-    display: flex !important;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    height: 233px !important;
-  }
-  .card-content {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: 100%;
   }
   .feedback-text {
-    font-family: 'Work Sans', sans-serif;
-    font-weight: 400;
     max-width: 357px;
-    font-size: 18px;
-    line-height: 1.5;
-    color: #080c0c;
-  }
-  .feedback-user-name {
-    font-family: 'Work Sans', sans-serif;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 1.5;
-    color: #080c0c;
-    margin-top: auto;
-  }
-
-  .feedback-arrow {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    gap: 8px;
-    border: 2px solid #080c0c;
-    border-radius: 100px;
-    padding: 12px;
-    width: 48px;
-    height: 48px;
-    position: absolute;
-    background-color: #f5fdfd;
-    z-index: 10;
-  }
-  .swiper-button-prev {
-    left: -25px;
-  }
-  .swiper-button-next {
-    right: -25px;
-  }
-  .arrow-icon {
-    stroke: #080c0c;
-    width: 24px;
-    height: 24px;
-  }
-
-  .feedback-arrow:hover {
-    background-color: #f19898;
-  }
-
-  .feedback-arrow:active {
-    background-color: #c07979;
-  }
-  .swiper-button-disabled {
-    background: #f5fdfd;
-    opacity: 0.2;
-  }
-
-  .feedback-arrow.swiper-button-disabled {
-    opacity: 1 !important;
-    border-color: #cccccc !important;
-    background-color: #f5fdfd !important;
-  }
-  .feedback-arrow.swiper-button-disabled .arrow-icon {
-    stroke: #cccccc !important;
-  }
-  .swiper-pagination {
-    display: flex !important;
-    flex-direction: row !important;
-    justify-content: center !important;
-    gap: 9px;
-    align-items: center !important;
-    width: 100% !important;
-    left: 0 !important;
-  }
-  .swiper-pagination-bullet {
-    width: 8px;
-    height: 8px;
-    border-radius: 100%;
-    background-color: #b0b0b0;
-    cursor: pointer;
-    opacity: 1;
-    transition: background-color 0.3s ease;
-  }
-  .swiper-pagination-bullet-active {
-    background-color: #000;
-  }
-  .raty-stars {
-    display: flex;
-    flex-direction: row;
-    gap: 4px; /* Расстояние между звездами */
-    margin-bottom: 16px; /* Отступ от звезд до текста отзыва */
-  }
-
-  .raty-stars img {
-    width: 20px;
-    height: 20px;
-    display: block;
   }
 }

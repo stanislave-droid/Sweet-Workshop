@@ -2,14 +2,14 @@ import axios from 'axios';
 import Swiper from 'swiper';
 import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
-import Raty from 'raty-js';
+import rater from 'rater-js';
 import { getFeedbacks } from '../exported/api';
 import { ApiBaseURL } from '../exported/constants';
 
 axios.defaults.baseURL = ApiBaseURL;
 
 function createCardMarkup(item) {
-  console.log(item.rate);
+  // console.log(item.rate);
   return `
     <div class="swiper-slide feedback-card">
       <div class="card-content">
@@ -41,6 +41,7 @@ async function renderFeedbackSection() {
       .join('');
 
     initFeedbackSlider();
+    initLibraryStars();
   } catch (error) {
     console.error(error);
     container.innerHTML =
@@ -48,20 +49,17 @@ async function renderFeedbackSection() {
   }
 }
 
-import starEmpty from '../../img/feedback/star-empty.svg?url';
-import starFull from '../../img/feedback/star-full.svg?url';
-import starHalf from '../../img/feedback/star-half.svg?url';
 function initLibraryStars() {
   document.querySelectorAll('.raty-stars').forEach(el => {
+    if (el.children.length > 0) return;
     const score = parseFloat(el.getAttribute('data-score'));
-
-    new Raty(el, {
-      score,
+    rater({
+      element: el,
+      rating: score,
+      max: 5,
       readOnly: true,
-      halfShow: true,
-      starOn: starFull,
-      starOff: starEmpty,
-      starHalf: starHalf,
+      starSize: 19,
+      step: 0.5,
     });
   });
 }
@@ -71,10 +69,17 @@ function initFeedbackSlider() {
     modules: [Navigation, Pagination],
     direction: 'horizontal',
     spaceBetween: 24,
-    slidesPerView: 3,
     grabCursor: true,
     observer: true,
     observeParents: true,
+    slidesPerGroup: 2,
+    slidesPerView: 1,
+    breakpoints: {
+      768: {
+        slidesPerView: 3,
+        slidesPerGroup: 1,
+      },
+    },
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
@@ -84,11 +89,6 @@ function initFeedbackSlider() {
       clickable: true,
       dynamicBullets: true,
       dynamicMainBullets: 4,
-    },
-    on: {
-      init: function () {
-        initLibraryStars();
-      },
     },
   });
 }
