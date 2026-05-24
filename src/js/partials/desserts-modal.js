@@ -18,6 +18,40 @@ async function fetchDessertById(id) {
   }
 }
 
+// async function fetchDessertById(id) {
+//   const BASE_URL = 'https://goit.study';
+
+//   try {
+//     const response = await fetch(`${BASE_URL}/deserts/${id}`);
+//     if (!response.ok) throw new Error(`Помилка: ${response.status}`);
+//     return await response.json();
+//   } catch (error) {
+//     console.warn(
+//       'Сервер GoIT недоступний через сертифікат SSL. Підключаємо тестовий десерт із ТЗ:',
+//       error
+//     );
+
+//     // Повертаємо ідеальний об'єкт десерту згідно з ТЗ та вашою Figma
+//     return {
+//       id: '642bd14d4369ef043bc2e93b',
+//       name: 'Шоколадний фондан',
+//       img: 'https://unsplash.com',
+//       price: 145,
+//       rating: 4.8,
+//       description:
+//         'Класичний французький десерт із хрусткою скоринкою та гарячим рідким шоколадом усередині. Подається з кулькою ванільного морозива.',
+//       ingredients: [
+//         'Чорний шоколад',
+//         'Вершкове масло',
+//         'Борошно',
+//         'Яйця',
+//         'Цукор',
+//         'Ванільний екстракт',
+//       ],
+//     };
+//   }
+// }
+
 function createRatingStars(rating) {
   const roundedRating = Math.round(rating);
   let starsHtml = '';
@@ -26,7 +60,7 @@ function createRatingStars(rating) {
     const isFilled = i <= roundedRating;
     starsHtml += `
       <svg class="star-icon ${isFilled ? 'filled' : ''}" width="18" height="18">
-        <use href="./src/img/icons.svg#icon-star"></use>
+        <use href="/src/img/icons.svg#icon-star"></use>
       </svg>
     `;
   }
@@ -48,7 +82,7 @@ function renderModalInnerContent(dessert) {
   refs.modal.innerHTML = `
     <button type="button" class="modal-close-btn" aria-label="Close modal">
       <svg class="modal-close-icon" width="14" height="14">
-        <use href="./src/img/icons.svg#icon-close"></use>
+        <use href="/src/img/icons.svg#icon-close"></use>
       </svg>
     </button>
 
@@ -59,14 +93,13 @@ function renderModalInnerContent(dessert) {
       
       <div class="modal-info">
         <h2 class="modal-title">${name}</h2>
-        ${starsMarkup}
-        <p class="modal-price">${price} ₴</p>
         
-        <p class="modal-section-title">Опис</p>
+        <p class="modal-price">${price} грн</p>
+        ${starsMarkup}
+        
         <p class="modal-description">${description}</p>
         
-        <p class="modal-section-title">Склад</p>
-        <ul class="modal-ingredients">${ingredientsMarkup}</ul>
+        <p class="modal-ingredients"><span class="modal-title-ingredientts">Склад: </span>${ingredients}</p>
         
         <button type="button" class="order-btn" id="go-to-order-btn">Перейти до замовлення</button>
       </div>
@@ -123,7 +156,7 @@ function onOrderBtnClick() {
   } else {
     console.warn('Функція команди openOrderFormModal() ще на стадії розробки.');
     alert(
-      'Поточне вікно закрите! Тут має відкритись форма зворотного зв’язку від ваших колег.'
+      'Поточне вікно закрите! Тут має відкритись форма зворотного зв’язку.'
     );
   }
 }
@@ -145,3 +178,12 @@ async function onGalleryClick(event) {
     await openDessertModal(dessertId);
   }
 }
+
+// const testBtn = document.querySelector('#test-modal-btn');
+// if (testBtn) {
+//   testBtn.addEventListener('click', () => {
+//     openDessertModal('642bd14d4369ef043bc2e93b'); // Виклик з реальним ID
+//   });
+// }
+
+// window.openDessertModal = openDessertModal;
