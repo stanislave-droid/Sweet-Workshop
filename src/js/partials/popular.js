@@ -1,5 +1,6 @@
 import { getPopularDesserts } from '../exported/api';
 import { createDessertsMarkup } from '../exported/render-functions';
+import { handlerButton } from '../exported/handlers';
 // import Swiper JS
 import Swiper from 'swiper';
 import { Navigation, Pagination } from 'swiper/modules';
@@ -10,7 +11,7 @@ import 'swiper/css/pagination';
 // import {showError} from `../exported/helpers`
 
 const classes = {
-  li: 'popular-card swiper-slide',
+  li: 'popular-card swiper-slide dessert-card',
   img: 'popular-img',
   contentHeader: 'popular-content-header',
   category: 'popular-paragraph',
@@ -36,18 +37,8 @@ getPopularDesserts()
     );
     runSwiper()
 
-    //---- event---
-
     popularList.addEventListener('click', handlerButton);
-
-    //---example hamdler---
-
-    function handlerButton(event) {
-      if (event.target.dataset.button === 'btn') {
-        console.log(event.target.closest(`.popular-card`).dataset.id);
-        // return event.target.closest(`.popular-card`).dataset.id
-      }
-    }
+   
   })
   .catch(error => {
     // showError(error.message);
