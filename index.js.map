@@ -1,1 +1,1 @@
-{"version":3,"file":"index.js","sources":[],"sourcesContent":[],"names":[],"mappings":""}
+{"version":3,"file":"index.js","sources":["../src/js/partials/footer.js"],"sourcesContent":["const legal = document.querySelector('.footer-legal');\nconst year = new Date().getFullYear();\n\nlegal.innerHTML = `&copy; ${year} Солодка Майстерня. Усі права захищені.`;\n"],"names":["legal","year"],"mappings":"ssBAAA,MAAMA,EAAQ,SAAS,cAAc,eAAe,EAC9CC,EAAO,IAAI,OAAO,cAExBD,EAAM,UAAY,UAAUC,CAAI"}
