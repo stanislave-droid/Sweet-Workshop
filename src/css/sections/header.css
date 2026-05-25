@@ -1,3 +1,7 @@
+body.prevent-scrolling {
+  overflow: hidden;
+}
+
 .header {
   position: relative;
   background: #f5fdfd;

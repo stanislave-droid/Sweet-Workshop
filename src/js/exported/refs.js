@@ -1,5 +1,6 @@
 export const refs = {
   container: document.getElementById('feedbacks-container'),
+  body: document.querySelector('body'),
   headerMenu: document.querySelector(".header"),
   headerMenuButton: document.querySelector("#header-menu-button"),
 };

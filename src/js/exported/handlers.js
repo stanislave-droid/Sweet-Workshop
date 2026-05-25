@@ -9,6 +9,7 @@ import { getDesserts } from '/js/exported/api';
 import { createDessertsMarkup } from '/js/exported/render-functions';
 import { sweetiesCardClasses } from '/js/exported/constants';
 import { showError, checkBoundariesForLoadMoreBtn } from '/js/exported/helpers';
+import { openHeaderMenu, closeHeaderMenu, isHeaderMenuOpen } from '/js/partials/header.js';
 
 let pageCount = 1;
 let categoryId;
@@ -68,17 +69,18 @@ export function onLoadMoreBtn() {
 
 export function handleHeaderMenuEscape(ev) {
   if (ev.key === "Escape") {
-    refs.headerMenu.classList.remove('header--open');
-    document.removeEventListener('keydown', handleHeaderMenuEscape);
+    closeHeaderMenu();
   }
 }
 
 export function handleHeaderMenuClick(ev) {
   if (ev.target.closest("button") === refs.headerMenuButton) {
-    refs.headerMenu.classList.toggle('header--open');
-    document.addEventListener('keydown', handleHeaderMenuEscape);
+    if (isHeaderMenuOpen()) {
+      closeHeaderMenu();
+    } else {
+      openHeaderMenu();
+    }
   } else if (ev.target.closest("a")) {
-    refs.headerMenu.classList.remove('header--open');
-    document.addEventListener('keydown', handleHeaderMenuEscape);
+    closeHeaderMenu();
   }
 }
