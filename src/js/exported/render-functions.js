@@ -51,7 +51,7 @@ export function createDessertsMarkup(desserts, classes) {
           </div>
           <div class="${classes.priceWrapper}">
             <p class="${classes.price}">${dessert.price} грн</p>
-            <button class="${classes.button}" data-button=btn>
+            <button class="${classes.button}">
               <svg class="${classes.svg}" width="24" height="24">
                 <use href="/img/icons.svg#icon-arrow_outward"></use>
               </svg>
