@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="uk">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/Sweet-Workshop/favicon.svg" />
@@ -19,7 +19,9 @@
       referrerpolicy="no-referrer"
     />
     <script type="module" crossorigin src="/Sweet-Workshop/index.js"></script>
-    <link rel="stylesheet" crossorigin href="/Sweet-Workshop/assets/index-uJHUQtpl.css">
+    <link rel="modulepreload" crossorigin href="/Sweet-Workshop/assets/vendor-ChxBTWY0.js">
+    <link rel="stylesheet" crossorigin href="/Sweet-Workshop/assets/vendor-4OY-QhaR.css">
+    <link rel="stylesheet" crossorigin href="/Sweet-Workshop/assets/index-DHmxymJQ.css">
   </head>
   <body>
     <header class="header">
@@ -38,7 +40,41 @@
 </section>
 
       <section class="sweeties">
-  <div class="container"></div>
+  <div class="container">
+    <div class="sweeties-text-content-wrapper">
+      <div class="sweeties-text-wrapper">
+        <h2 class="sweeties-title">Солодощі</h2>
+        <p class="sweeties-desc">
+          Спробуйте наші смачні десерти, які вас здивують!
+        </p>
+      </div>
+      <select id="sweeties-category-select" class="sw-cat-select">
+        <option value="" selected>Всі десерти</option>
+      </select>
+    </div>
+    <div class="sweeties-category-wrapper">
+      <ul class="sweeties-category-list">
+        <label class="sweeties-category-label">
+          <input
+            type="radio"
+            value=""
+            name="sweeties-category-btn"
+            class="sweeties-category-radio-btn"
+            checked
+          />
+          <div class="sweeties-category-button">Всі десерти</div>
+        </label>
+      </ul>
+      <span class="sweeties-category-loader"></span>
+    </div>
+    <div class="sweeties-desserts-wrapper">
+      <ul class="sweeties-desserts-list"></ul>
+      <span class="sweeties-desserts-loader"></span>
+    </div>
+    <button type="button" class="sweeties-load-more-btn is-hidden">
+      Завантажити ще
+    </button>
+  </div>
 </section>
 
       <section class="about-us">
