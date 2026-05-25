@@ -1,6 +1,7 @@
+import { postOrder } from '../exported/api.js';
 import Swal from 'sweetalert2';
 
-const openModalBtn = document.querySelector('.open-order-modal-btn');
+let currentDessertId = null;
 
 const modalOverlay = document.querySelector('.order-modal-overlay');
 
@@ -8,17 +9,35 @@ const closeModalBtn = document.querySelector('.order-modal-close-btn');
 
 const orderForm = document.querySelector('.order-form');
 
-openModalBtn.addEventListener('click', openModal);
+// OPEN MODAL FROM DYNAMIC DESSERT BUTTONS
+
+document.addEventListener('click', event => {
+  const button = event.target.closest('.open-order-modal-btn');
+
+  if (!button) return;
+
+  currentDessertId = button.dataset.id;
+
+  openModal();
+});
+
+// CLOSE BUTTON
 
 closeModalBtn.addEventListener('click', closeModal);
 
+// FORM SUBMIT
+
 orderForm.addEventListener('submit', handleOrderSubmit);
+
+// CLOSE BY OVERLAY
 
 modalOverlay.addEventListener('click', event => {
   if (event.target === modalOverlay) {
     closeModal();
   }
 });
+
+// CLOSE BY ESC
 
 document.addEventListener('keydown', event => {
   if (event.key === 'Escape') {
@@ -49,6 +68,8 @@ async function handleOrderSubmit(event) {
     phone: formData.get('phone').replace(/\D/g, ''),
 
     comment: formData.get('comment').trim(),
+
+    // dessertId: currentDessertId,
 
     dessertId: '6852a9fcb459460cb6b47748',
   };
@@ -90,26 +111,7 @@ async function handleOrderSubmit(event) {
   }
 
   try {
-    const response = await fetch(
-      'https://deserts-store.b.goit.study/api/orders',
-      {
-        method: 'POST',
-
-        headers: {
-          'Content-Type': 'application/json',
-        },
-
-        body: JSON.stringify(data),
-      }
-    );
-
-    if (!response.ok) {
-      const errorData = await response.json();
-
-      throw new Error(errorData.message);
-    }
-
-    const result = await response.json();
+    const result = await postOrder(data);
 
     console.log(result);
 

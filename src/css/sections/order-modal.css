@@ -28,7 +28,7 @@
 
   padding: 64px 20px;
 
-  border-radius: 32px;
+  border-radius: 16px;
 
   background-color: #f2f6f6;
 
@@ -45,18 +45,25 @@
   justify-content: center;
   align-items: center;
 
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  height: 32px;
 
   border: none;
   background-color: transparent;
 
   padding: 0;
 
-  font-size: 18px;
-  line-height: 1;
+  cursor: pointer;
 
   transition: transform 250ms ease;
+}
+
+.order-modal-close-icon {
+  width: 24px;
+  height: 24px;
+
+  stroke: #1b1b1b;
+  fill: none;
 }
 
 .order-modal-close-btn:hover,
@@ -65,8 +72,6 @@
 }
 
 .order-modal-title {
-  /* margin-bottom: 32px; */
-
   text-align: center;
 
   font-size: 36px;
@@ -96,8 +101,8 @@
 
   box-sizing: border-box;
 
-  border: 1px solid #080c0c;
-  border-radius: 8px;
+  border: 2px solid #080c0c;
+  border-radius: 12px;
 
   background-color: transparent;
 
@@ -107,11 +112,12 @@
 }
 
 .order-form-input {
-  height: 48px;
+  height: 40px;
 }
 
 .order-form-textarea {
-  min-height: 120px;
+  min-height: 140px;
+
   resize: none;
 }
 
@@ -120,6 +126,13 @@
   color: #878c8c;
 }
 
+/* .order-form-input:focus,
+.order-form-textarea:focus {
+  border-color: #efa69d;
+} */
+
+.order-form-input:hover,
+.order-form-textarea:hover,
 .order-form-input:focus,
 .order-form-textarea:focus {
   border-color: #efa69d;
@@ -127,7 +140,7 @@
 
 .order-form-submit-btn {
   width: 100%;
-  height: 48px;
+  height: 44px;
 
   box-sizing: border-box;
 
@@ -135,6 +148,12 @@
   border-radius: 100px;
 
   background-color: #efa69d;
+
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 500;
+
+  cursor: pointer;
 
   transition: background-color 250ms ease, transform 250ms ease;
 }
@@ -156,20 +175,16 @@
 @media only screen and (min-width: 768px) {
   .order-modal {
     max-width: 704px;
-
-    padding: 64px;
-  }
-
-  .order-modal-title {
-    font-size: 36px;
+    padding: 64px 32px;
   }
 
   .order-form-textarea {
-    min-height: 140px;
+    min-height: 180px;
   }
 
   .order-form-submit-btn {
-    width: 173px;
+    width: 234px;
+    height: 44px;
 
     margin: 0 auto;
   }
@@ -180,5 +195,10 @@
 @media only screen and (min-width: 1200px) {
   .order-modal {
     max-width: 866px;
+  }
+
+  .order-form-submit-btn {
+    width: 196px;
+    height: 44px;
   }
 }
