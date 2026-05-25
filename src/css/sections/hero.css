@@ -61,7 +61,7 @@
   color: #080c0c;
 
   background-color: #f19898;
-  border: 2px solid transparent;
+  border: 1px solid #f19898;
   border-radius: 100px;
 
   transition:
@@ -70,8 +70,8 @@
 }
 
 .hero-link:active {
-  background-color: #c07979;
-  border-color: #080c0c;
+  border: 2px solid #080c0c;
+  background-color: #f5b6b6;
 }
 
 @media screen and (min-width: 768px) {
@@ -101,20 +101,20 @@
   }
 
   .hero-link {
-    width: auto;
+    width: 219px;
   }
 
   .hero-link:hover,
   .hero-link:focus {
-    background-color: #fff;
+    background-color: #f5fdfd;
     border: 2px solid #080c0c;
     outline: none;
     cursor: pointer;
   }
 
   .hero-link:active {
-    background-color: #c07979;
-    border-color: #080c0c;
+    border: 2px solid #080c0c;
+    background-color: #f5b6b6;
   }
 }
 
@@ -137,6 +137,7 @@
   }
 
   .hero-title {
+    text-decoration: underline;
     font-size: 56px;
     max-width: 768px;
   }
