@@ -1,50 +1,36 @@
-import { getPopularDesserts } from '../exported/api';
-import { createDessertsMarkup } from '../exported/render-functions';
-import { handlerButton } from '../exported/handlers';
+import { getPopularDesserts } from '/js/exported/api';
+import { createDessertsMarkup } from '/js/exported/render-functions';
+import { handlerButton } from '/js/exported/handlers';
+import { classesPopular } from '/js/exported/constants';
+import { loaderPopular, popularList } from '/js/exported/refs';
 // import Swiper JS
 import Swiper from 'swiper';
 import { Navigation, Pagination } from 'swiper/modules';
+
 // import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-// import {showError} from `../exported/helpers`
 
-const classes = {
-  li: 'popular-card swiper-slide dessert-card',
-  img: 'popular-img',
-  contentHeader: 'popular-content-header',
-  category: 'popular-paragraph',
-  description: 'popular-paragraph',
-  nameWrapper: 'popular-name-wraper',
-  name: 'popular-name',
-  priceWrapper: 'popular-price-wrapper',
-  price: 'popular-price',
-  button: 'popular-button',
-  description: 'popular-description',
-  content: 'popular-content',
-};
+import {showError} from `/js/exported/helpers`
 
-const loader = document.querySelector('.popular-loader');
-loader.classList.remove('hidden');
+loaderPopular.classList.remove('hidden');
 
 getPopularDesserts()
   .then(({ desserts }) => {
-    const popularList = document.querySelector('.popular-list');
     popularList.insertAdjacentHTML(
       'beforeend',
-      createDessertsMarkup(desserts, classes)
+      createDessertsMarkup(desserts, classesPopular)
     );
-    runSwiper()
+    runSwiper();
 
     popularList.addEventListener('click', handlerButton);
-   
   })
   .catch(error => {
-    // showError(error.message);
+    showError(error.message);
   })
   .finally(() => {
-    loader.classList.add('hidden');
+    loaderPopular.classList.add('hidden');
   });
 
 function runSwiper() {

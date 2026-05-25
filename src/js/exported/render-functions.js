@@ -40,8 +40,8 @@ export function createDessertsMarkup(desserts, classes) {
     .map(dessert => {
       return `
       <li data-id="${dessert._id}" class="${classes.li}">
-        <div class="${classes.content}">
-        <img src="${dessert.image}" alt="${dessert.name}" class="${classes.img}" >
+       <img src="${dessert.image}" alt="${dessert.name}" class="${classes.img}" >
+        <div class="${classes.content}">   
           <div class="${classes.contentHeader}">
             <p class="${classes.category}">${dessert.category.name}</p>
             <div class="${classes.nameWrapper}">
