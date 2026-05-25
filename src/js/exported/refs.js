@@ -1,5 +1,17 @@
 export const refs = {
   container: document.getElementById('feedbacks-container'),
+  overlay: document.querySelector('[data-dessert-modal]'),
+  closeBtn: document.querySelector('[data-modal-close]'),
+  starsContainer: document.querySelector('#dessert-raty-stars'),
+  modalImg: document.querySelector('[data-modal-img]'),
+  modalTitle: document.querySelector('[data-modal-title]'),
+  modalPrice: document.querySelector('[data-modal-price]'),
+  modalDescription: document.querySelector('[data-modal-description]'),
+  modalIngredients: document.querySelector('[data-modal-ingredients]'),
+  orderBtn: document.querySelector('[data-order-btn]'),
+  popularList: document.querySelector('.popular-list'),
+  modalReitStars: document.querySelector('.rating-container'),
+  handlerOrderButton: document.querySelector('[data-order-btn]'),
 };
 export const sweetiesCategoryList = document.querySelector(
   '.sweeties-category-list'
