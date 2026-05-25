@@ -1,6 +1,9 @@
+import iziToast from 'izitoast';
 import { getFeedbacks } from '/js/exported/api.js';
 import { refs } from '/js/exported/refs.js';
 import 'css-star-rating/css/star-rating.css';
+import 'izitoast/dist/css/iziToast.min.css';
+import { showError } from '/js/exported/helpers.js';
 
 export function createDessertsMarkup(desserts, classes) {
   if (classes.li === undefined) {
@@ -172,8 +175,6 @@ export async function renderFeedbackSection(initFeedbackSlider) {
   if (!container) return;
 
   try {
-    // throw new Error('Test error');
-
     const data = await getFeedbacks(1, 10);
     const feedbacksList = data.feedbacks;
 
