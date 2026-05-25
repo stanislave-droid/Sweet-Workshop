@@ -1,3 +1,5 @@
+import { getDessert } from '../api.js';
+
 import spriteUrl from '../../img/icons.svg';
 
 const refs = {
@@ -5,8 +7,6 @@ const refs = {
   closeBtn: document.querySelector('[data-modal-close]'),
   starsContainer: document.querySelector('#dessert-raty-stars'),
 };
-
-const BASE_URL = 'https://goit.study';
 
 // --- ЗАВАНТАЖЕННЯ БІБЛІОТЕКИ RATY-JS ---
 function loadRatyLibrary() {
@@ -25,18 +25,6 @@ function loadRatyLibrary() {
   });
 }
 
-async function fetchDessertById(id) {
-  const response = await fetch(`${BASE_URL}/deserts/${id}`);
-
-  if (!response.ok) {
-    throw new Error(
-      `Не вдалося завантажити десерт. Статус сервера: ${response.status}`
-    );
-  }
-
-  return await response.json();
-}
-
 function fillModalWithData(dessert) {
   if (refs.closeBtn) {
     refs.closeBtn.innerHTML = `
@@ -51,6 +39,7 @@ function fillModalWithData(dessert) {
   const modalPrice = document.querySelector('[data-modal-price]');
   const modalDescription = document.querySelector('[data-modal-description]');
   const modalIngredients = document.querySelector('[data-modal-ingredients]');
+  const orderBtn = document.querySelector('[data-order-btn]');
 
   if (modalImg) {
     modalImg.src = dessert.img;
@@ -64,6 +53,10 @@ function fillModalWithData(dessert) {
     modalIngredients.textContent = Array.isArray(dessert.ingredients)
       ? dessert.ingredients.join(', ')
       : dessert.ingredients || 'Secret ingredients';
+  }
+
+  if (orderBtn) {
+    orderBtn.dataset.id = dessert._id || dessert.id;
   }
 }
 
@@ -87,7 +80,7 @@ async function initRatyStars(ratingScore) {
 
 export async function openDessertModal(id) {
   try {
-    const dessertData = await fetchDessertById(id);
+    const dessertData = await getDessert(id);
 
     fillModalWithData(dessertData);
     await initRatyStars(dessertData.rating);
@@ -98,10 +91,7 @@ export async function openDessertModal(id) {
     window.addEventListener('keydown', onEscKeyPress);
     if (refs.overlay) refs.overlay.addEventListener('click', onBackdropClick);
   } catch (error) {
-    console.error(
-      'Помилка при відкритті модального вікна десерту:',
-      error.message
-    );
+    console.error('Помилка при отриманні десерту через api.js:', error.message);
     alert(
       'На жаль, не вдалося завантажити дані про цей десерт. Спробуйте пізніше.'
     );
@@ -138,8 +128,6 @@ function handlerButton(event) {
 
     if (cardElement) {
       const dessertId = cardElement.dataset.id;
-      console.log(`Клікнули на десерт з ID: ${dessertId}`);
-
       openDessertModal(dessertId);
     }
   }
