@@ -39,8 +39,8 @@
 .hero-text {
   font-weight: 400;
   font-size: 18px;
-  line-height: 1.5;
-  max-width: 335px;
+
+  max-width: 330px;
   color: #ffffff;
   margin-bottom: 32px;
   text-align: center;
@@ -55,7 +55,7 @@
   font-family: 'Work Sans', sans-serif;
   font-weight: 500;
   font-size: 16px;
-  line-height: 1.5;
+
   text-align: center;
   text-decoration: none;
   color: #080c0c;
@@ -118,7 +118,7 @@
   }
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1440px) {
   .hero {
     padding-top: 306px;
     padding-bottom: 306px;
