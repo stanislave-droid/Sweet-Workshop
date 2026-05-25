@@ -5,6 +5,7 @@
 }
 .feedback-subtitle {
   text-align: center;
+  font-size: 18px;
 }
 .feedback-stars {
   display: flex;
