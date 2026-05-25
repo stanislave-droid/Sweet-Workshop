@@ -12,9 +12,7 @@ function fillModalWithData(dessert) {
   refs.modalTitle.textContent = dessert.name;
   refs.modalPrice.textContent = `${dessert.price} грн`;
   refs.modalDescription.textContent = dessert.description;
-  refs.modalIngredients.textContent = Array.isArray(dessert.ingredients)
-    ? dessert.ingredients.join(', ')
-    : dessert.ingredients || 'Secret ingredients';
+  refs.modalIngredients.textContent = dessert.composition;
 
   refs.orderBtn.dataset.id = dessert._id || dessert.id;
 }
@@ -27,6 +25,7 @@ export async function openDessertModal(id) {
 
     document.body.classList.add('modal-open');
     refs.overlay.classList.remove('is-hidden');
+    refs.handlerOrderButton.dataset.order = id;
 
     window.addEventListener('keydown', onEscKeyPress);
     refs.overlay.addEventListener('click', onBackdropClick);

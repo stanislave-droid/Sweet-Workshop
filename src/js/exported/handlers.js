@@ -70,3 +70,8 @@ export function handlerButton(event) {
     openDessertModal(event.target.closest(`.dessert-card`).dataset.id);
   }
 }
+export function handlerOrderButton(event) {
+  if (event.target.nodeName === 'BUTTON' || event.target.nodeName === 'svg') {
+    openDessertModal(event.target.closest('[data-order-btn]').dataset.id);
+  }
+}

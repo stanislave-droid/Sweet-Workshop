@@ -11,6 +11,7 @@ export const refs = {
   orderBtn: document.querySelector('[data-order-btn]'),
   popularList: document.querySelector('.popular-list'),
   modalReitStars: document.querySelector('.rating-container'),
+  handlerOrderButton: document.querySelector('[data-order-btn]'),
 };
 export const sweetiesCategoryList = document.querySelector(
   '.sweeties-category-list'
