@@ -15,7 +15,7 @@
 
 .feedback-stars svg {
   width: 20px !important;
-  height: 20px !important;
+  height: 19px !important;
   flex-shrink: 0;
 }
 
@@ -23,7 +23,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  /* max-width: 375px; */
   margin-top: 40px;
   position: relative;
   padding-bottom: 80px;
@@ -61,13 +60,6 @@
   margin-top: auto;
 }
 
-.swiper-slide {
-  height: 209px !important;
-}
-.feedback-text {
-  max-width: 271px;
-}
-
 .feedback-arrow {
   bottom: 10px;
   display: flex;
@@ -86,10 +78,12 @@
 
 .feedback-arrow:hover {
   background-color: #f19898;
+  transition: background-color 0.3s ease;
 }
 
 .feedback-arrow:active {
   background-color: #c07979;
+  transition: background-color 0.3s ease;
 }
 .swiper-button-disabled {
   background: #f5fdfd;
@@ -139,7 +133,6 @@
 /* Styles for Tablet devices */
 @media only screen and (min-width: 768px) {
   .feedback-slider-container {
-    /* max-width: 768px; */
     padding-bottom: 48px;
   }
   .swiper-slide {
@@ -175,7 +168,6 @@
 /* Styles for Desktop devices */
 @media only screen and (min-width: 1440px) {
   .feedback-slider-container {
-    /* max-width: 1312px; */
     margin-top: 80px;
   }
   .feedback-text {
