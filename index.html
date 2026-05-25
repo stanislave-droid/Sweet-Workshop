@@ -21,7 +21,7 @@
     <script type="module" crossorigin src="/Sweet-Workshop/index.js"></script>
     <link rel="modulepreload" crossorigin href="/Sweet-Workshop/assets/vendor-BH6JQPA-.js">
     <link rel="stylesheet" crossorigin href="/Sweet-Workshop/assets/vendor-BLQEKC2z.css">
-    <link rel="stylesheet" crossorigin href="/Sweet-Workshop/assets/index-BwR3vadh.css">
+    <link rel="stylesheet" crossorigin href="/Sweet-Workshop/assets/index-DtcRXSGI.css">
   </head>
   <body>
     <header class="header">
@@ -435,8 +435,36 @@
   <div class="order-modal"></div>
 </div>
 
-    <div class="desserts-modal-overlay">
-  <div class="desserts-modal"></div>
+    <div class="desserts-modal-overlay is-hidden" data-dessert-modal>
+  <div class="desserts-modal">
+    <button
+      type="button"
+      class="modal-close-btn"
+      data-modal-close
+      aria-label="Close modal"
+    >
+      <svg class="modal-close-icon" width="14" height="14">
+        <use href="/Sweet-Workshop/assets/icons-CBauzLun.svg#icon-close"></use>
+      </svg>
+    </button>
+    <div class="desserts-modal-wrapper">
+      <div class="modal-thumb">
+        <img class="modal-img" data-modal-img src="" alt="" />
+      </div>
+      <div class="modal-info">
+        <h2 class="modal-title" data-modal-title></h2>
+        <p class="modal-price" data-modal-price></p>
+        <div id="dessert-raty-stars" class="rating-container"></div>
+        <p class="modal-description" data-modal-description></p>
+        <p class="modal-title-ingredientts">
+          Склад: <span class="modal-ingredients" data-modal-ingredients></span>
+        </p>
+        <button type="button" class="order-btn" data-order-btn>
+          Перейти до замовлення
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
 
 
