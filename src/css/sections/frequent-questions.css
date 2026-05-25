@@ -68,6 +68,9 @@
 
 .faq-icon {
   transition: transform 0.3s ease;
+  fill: #080c0c;
+  stroke-width: 1px;
+  stroke: #080c0c;
 }
 .ac.is-active .faq-icon {
   transform: rotate(180deg);
