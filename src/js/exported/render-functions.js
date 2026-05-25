@@ -5,6 +5,30 @@ import 'css-star-rating/css/star-rating.css';
 import 'izitoast/dist/css/iziToast.min.css';
 import { showError } from '/js/exported/helpers.js';
 
+export function createMarkupForSelect(dataArray) {
+  const resultData = dataArray.map(({ _id, name }) => {
+    return { text: name, value: _id, class: 'sw-cat-select-item' };
+  });
+  return resultData;
+}
+
+export function createMarkupForCategoryButtons(dataArray) {
+  const resultData = dataArray
+    .map(
+      ({ _id, name }) => `<label class="sweeties-category-label">
+        <input
+          type="radio"
+          value="${_id}"
+          name="sweeties-category-btn"
+          class="sweeties-category-radio-btn"
+        />
+        <div class="sweeties-category-button">${name}</div>
+      </label>`
+    )
+    .join('');
+  return resultData;
+}
+
 export function createDessertsMarkup(desserts, classes) {
   if (classes.li === undefined) {
     classes.li = '';

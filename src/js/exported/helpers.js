@@ -11,3 +11,7 @@ export function showError(message) {
     backgroundColor: 'red',
   });
 }
+
+export function checkBoundariesForLoadMoreBtn({ totalItems, limit, page }) {
+  return totalItems - limit * page > 0;
+}
