@@ -1,3 +1,6 @@
+export const refs = {
+  container: document.getElementById('feedbacks-container'),
+};
 export const sweetiesCategoryList = document.querySelector(
   '.sweeties-category-list'
 );
