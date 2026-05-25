@@ -65,8 +65,9 @@ body.modal-open {
 }
 
 .modal-close-icon {
+  fill: #fff;
   stroke-width: 1px;
-  color: #080c0c;
+  stroke: #080c0c;
 }
 
 .modal-close-btn:hover,
@@ -168,6 +169,7 @@ body.modal-open {
   transition:
     background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
     box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  margin-top: 32px;
 }
 
 .order-btn:hover,
@@ -221,22 +223,12 @@ body.modal-open {
 .rating-container {
   display: flex;
   align-items: center;
-  gap: 4px;
-  margin-bottom: 16px;
+  gap: 6px;
+  margin-top: 12px;
 }
 
-.star-icon {
-  fill: #e0e0e0;
-  transition: fill 250ms ease;
-}
-
-.star-icon.filled {
-  fill: #ffb800;
-}
-
-.rating-value {
-  font-size: 14px;
-  font-weight: 500;
-  color: #8c8c8c;
-  margin-left: 6px;
+/* Колір зірочок бібліотеки Raty */
+.rating-container .raty-icon {
+  color: #ffb800; /* Гарний золотий колір для зафарбованих елементів */
+  font-size: 20px;
 }

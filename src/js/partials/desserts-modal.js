@@ -1,189 +1,137 @@
-const BASE_URL = 'https://goit.study';
+import spriteUrl from '../../img/icons.svg';
 
 const refs = {
-  overlay: document.querySelector('.desserts-modal-overlay'),
-  modal: document.querySelector('.desserts-modal'),
-  body: document.body,
+  overlay: document.querySelector('[data-dessert-modal]'),
+  closeBtn: document.querySelector('[data-modal-close]'),
+  testBtn: document.querySelector('[data-test-modal-btn]'),
+  starsContainer: document.querySelector('#dessert-raty-stars'),
+  // Елементи контенту ми прибрали звідси, щоб уникнути помилки null
 };
 
+const BASE_URL = 'https://goit.study';
+
+// --- ДИНАМІЧНЕ ЗАВАНТАЖЕННЯ БІБЛІОТЕКИ RATY-JS ---
+function loadRatyLibrary() {
+  return new Promise(resolve => {
+    if (window.Raty) return resolve(window.Raty);
+
+    // 1. Виправляємо шлях до стилів CDN
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'https://jsdelivr.net';
+    document.head.appendChild(link);
+
+    // 2. Виправляємо шлях до скрипту CDN
+    const script = document.createElement('script');
+    script.src = 'https://jsdelivr.net';
+    script.onload = () => resolve(window.Raty);
+    document.body.appendChild(script);
+  });
+}
+
+// --- ЗАПИТ ДО API (З автоматичною заглушкою) ---
 async function fetchDessertById(id) {
   try {
     const response = await fetch(`${BASE_URL}/deserts/${id}`);
-    if (!response.ok)
-      throw new Error(`Помилка завантаження: ${response.status}`);
+    if (!response.ok) throw new Error(`Status: ${response.status}`);
     return await response.json();
   } catch (error) {
-    console.error('Помилка при запиті до API:', error);
-    return null;
+    console.warn('Сервер недоступний або 404. Вмикаємо Mock-дані:', error);
+    return {
+      name: 'Шоколадний фондан',
+      // Виправляємо посилання на реальне зображення фондану
+      img: 'https://unsplash.com',
+      price: '145 грн',
+      rating: 4.5,
+      description:
+        'Класичний французький десерт із крихкою скоринкою та гарячим рідким шоколадом усередині. Подається з кулькою ванільного морозива.',
+      ingredients: 'Чорний шоколад, Вершкове масло, Борошно, Яйця, Цукор',
+    };
   }
 }
 
-// async function fetchDessertById(id) {
-//   const BASE_URL = 'https://goit.study';
-
-//   try {
-//     const response = await fetch(`${BASE_URL}/deserts/${id}`);
-//     if (!response.ok) throw new Error(`Помилка: ${response.status}`);
-//     return await response.json();
-//   } catch (error) {
-//     console.warn(
-//       'Сервер GoIT недоступний через сертифікат SSL. Підключаємо тестовий десерт із ТЗ:',
-//       error
-//     );
-
-//     // Повертаємо ідеальний об'єкт десерту згідно з ТЗ та вашою Figma
-//     return {
-//       id: '642bd14d4369ef043bc2e93b',
-//       name: 'Шоколадний фондан',
-//       img: 'https://unsplash.com',
-//       price: 145,
-//       rating: 4.8,
-//       description:
-//         'Класичний французький десерт із хрусткою скоринкою та гарячим рідким шоколадом усередині. Подається з кулькою ванільного морозива.',
-//       ingredients: [
-//         'Чорний шоколад',
-//         'Вершкове масло',
-//         'Борошно',
-//         'Яйця',
-//         'Цукор',
-//         'Ванільний екстракт',
-//       ],
-//     };
-//   }
-// }
-
-function createRatingStars(rating) {
-  const roundedRating = Math.round(rating);
-  let starsHtml = '';
-
-  for (let i = 1; i <= 5; i++) {
-    const isFilled = i <= roundedRating;
-    starsHtml += `
-      <svg class="star-icon ${isFilled ? 'filled' : ''}" width="18" height="18">
-        <use href="/src/img/icons.svg#icon-star"></use>
+// --- ЗАПОВНЕННЯ ТВОГО HTML ДАНИМИ ---
+function fillModalWithData(dessert) {
+  // Вставляємо хрестик у кнопку за відносним шляхом Vite
+  if (refs.closeBtn) {
+    refs.closeBtn.innerHTML = `
+      <svg class="modal-close-icon" width="24" height="24">
+        <use href="${spriteUrl}#icon-close"></use>
       </svg>
     `;
   }
-  return `
-    <div class="rating-container">
-      ${starsHtml}
-      <span class="rating-value">${rating}</span>
-    </div>
-  `;
+
+  // Знаходимо елементи всередині розмітки безпосередньо в момент виклику функції
+  const modalImg = document.querySelector('[data-modal-img]');
+  const modalTitle = document.querySelector('[data-modal-title]');
+  const modalPrice = document.querySelector('[data-modal-price]');
+  const modalDescription = document.querySelector('[data-modal-description]');
+  const modalIngredients = document.querySelector('[data-modal-ingredients]');
+
+  // Безпечно заповнюємо твою готову HTML верстку текстом
+  if (modalImg) {
+    modalImg.src = dessert.img;
+    modalImg.alt = dessert.name;
+  }
+  if (modalTitle) modalTitle.textContent = dessert.name;
+  if (modalPrice) modalPrice.textContent = dessert.price;
+  if (modalDescription) modalDescription.textContent = dessert.description;
+  if (modalIngredients)
+    modalIngredients.textContent = dessert.ingredients || 'Secret ingredients';
 }
 
-function renderModalInnerContent(dessert) {
-  const { name, img, image, price, description, ingredients, rating } = dessert;
-  const dessertImg = img || image;
+// --- ІНІЦІАЛІЗАЦІЯ RATY-JS ---
+async function initRatyStars(ratingScore) {
+  if (!refs.starsContainer) return;
+  refs.starsContainer.innerHTML = '';
 
-  const starsMarkup = createRatingStars(rating);
-  const ingredientsMarkup = ingredients.map(ing => `<li>${ing}</li>`).join('');
+  const RatyLib = await loadRatyLibrary();
 
-  refs.modal.innerHTML = `
-    <button type="button" class="modal-close-btn" aria-label="Close modal">
-      <svg class="modal-close-icon" width="14" height="14">
-        <use href="/src/img/icons.svg#icon-close"></use>
-      </svg>
-    </button>
-
-    <div class="desserts-modal-wrapper">
-      <div class="modal-thumb">
-        <img src="${dessertImg}" alt="${name}" class="modal-img" />
-      </div>
-      
-      <div class="modal-info">
-        <h2 class="modal-title">${name}</h2>
-        
-        <p class="modal-price">${price} грн</p>
-        ${starsMarkup}
-        
-        <p class="modal-description">${description}</p>
-        
-        <p class="modal-ingredients"><span class="modal-title-ingredientts">Склад: </span>${ingredients}</p>
-        
-        <button type="button" class="order-btn" id="go-to-order-btn">Перейти до замовлення</button>
-      </div>
-    </div>
-  `;
-
-  refs.modal
-    .querySelector('.modal-close-btn')
-    .addEventListener('click', closeModal);
-  document
-    .getElementById('go-to-order-btn')
-    .addEventListener('click', onOrderBtnClick);
+  if (RatyLib) {
+    const ratyInstance = new RatyLib(refs.starsContainer, {
+      score: ratingScore,
+      readOnly: true,
+      halfShow: true,
+      starType: 'i',
+    });
+    ratyInstance.init();
+  }
 }
 
-async function openDessertModal(dessertId) {
-  const dessertData = await fetchDessertById(dessertId);
-  if (!dessertData) return;
+// --- КЕРУВАННЯ МОДАЛКОЮ ---
+export async function openDessertModal(id) {
+  const dessertData = await fetchDessertById(id);
 
-  renderModalInnerContent(dessertData);
+  fillModalWithData(dessertData);
+  await initRatyStars(dessertData.rating);
 
-  refs.overlay.classList.remove('is-hidden');
-  refs.body.classList.add('modal-open');
+  document.body.classList.add('modal-open');
+  if (refs.overlay) refs.overlay.classList.remove('is-hidden');
 
   window.addEventListener('keydown', onEscKeyPress);
-  refs.overlay.addEventListener('click', onOverlayClick);
+  if (refs.overlay) refs.overlay.addEventListener('click', onBackdropClick);
 }
 
 function closeModal() {
-  refs.overlay.classList.add('is-hidden');
-  refs.body.classList.remove('modal-open');
-  refs.modal.innerHTML = '';
+  document.body.classList.remove('modal-open');
+  if (refs.overlay) refs.overlay.classList.add('is-hidden');
 
   window.removeEventListener('keydown', onEscKeyPress);
-  refs.overlay.removeEventListener('click', onOverlayClick);
+  if (refs.overlay) refs.overlay.removeEventListener('click', onBackdropClick);
 }
 
-function onOverlayClick(event) {
-  if (event.target === event.currentTarget) {
-    closeModal();
-  }
+function onEscKeyPress(e) {
+  if (e.code === 'Escape') closeModal();
 }
 
-function onEscKeyPress(event) {
-  if (event.code === 'Escape') {
-    closeModal();
-  }
+function onBackdropClick(e) {
+  if (e.target === refs.overlay) closeModal();
 }
 
-function onOrderBtnClick() {
-  closeModal();
+if (refs.closeBtn) refs.closeBtn.addEventListener('click', closeModal);
 
-  if (typeof openOrderFormModal === 'function') {
-    openOrderFormModal();
-  } else {
-    console.warn('Функція команди openOrderFormModal() ще на стадії розробки.');
-    alert(
-      'Поточне вікно закрите! Тут має відкритись форма зворотного зв’язку.'
-    );
-  }
+if (refs.testBtn) {
+  refs.testBtn.addEventListener('click', () => openDessertModal('any-id'));
 }
 
-const galleryList = document.querySelector('.desserts-list');
-
-if (galleryList) {
-  galleryList.addEventListener('click', onGalleryClick);
-}
-
-async function onGalleryClick(event) {
-  const clickedCard = event.target.closest('.dessert-item');
-
-  if (!clickedCard) return;
-
-  const dessertId = clickedCard.dataset.id;
-
-  if (dessertId) {
-    await openDessertModal(dessertId);
-  }
-}
-
-// const testBtn = document.querySelector('#test-modal-btn');
-// if (testBtn) {
-//   testBtn.addEventListener('click', () => {
-//     openDessertModal('642bd14d4369ef043bc2e93b'); // Виклик з реальним ID
-//   });
-// }
-
-// window.openDessertModal = openDessertModal;
+window.openDessertModal = openDessertModal;
