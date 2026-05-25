@@ -220,14 +220,14 @@ body.modal-open {
   }
 }
 
-.rating-container {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin-top: 12px;
+svg {
+  flex-shrink: 0;
+  width: 16px !important;
+  height: 16px !important;
 }
 
-.rating-container .raty-icon {
-  color: black;
-  font-size: 20px;
+.rating-container {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 24px;
 }

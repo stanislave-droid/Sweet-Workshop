@@ -10,6 +10,7 @@ export const refs = {
   modalIngredients: document.querySelector('[data-modal-ingredients]'),
   orderBtn: document.querySelector('[data-order-btn]'),
   popularList: document.querySelector('.popular-list'),
+  modalReitStars: document.querySelector('.rating-container'),
 };
 export const sweetiesCategoryList = document.querySelector(
   '.sweeties-category-list'
