@@ -69,13 +69,16 @@ export function onLoadMoreBtn() {
 export function handleHeaderMenuEscape(ev) {
   if (ev.key === "Escape") {
     refs.headerMenu.classList.remove('header--open');
+    document.removeEventListener('keydown', handleHeaderMenuEscape);
   }
 }
 
 export function handleHeaderMenuClick(ev) {
   if (ev.target.closest("button") === refs.headerMenuButton) {
     refs.headerMenu.classList.toggle('header--open');
+    document.addEventListener('keydown', handleHeaderMenuEscape);
   } else if (ev.target.closest("a")) {
     refs.headerMenu.classList.remove('header--open');
+    document.addEventListener('keydown', handleHeaderMenuEscape);
   }
 }
