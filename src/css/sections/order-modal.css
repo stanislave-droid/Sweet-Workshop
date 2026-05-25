@@ -144,10 +144,11 @@ body {
 
   box-sizing: border-box;
 
-  border: 2px solid #080c0c;
+  border: 2px solid transparent;
   border-radius: 100px;
 
-  background-color: #f5fdfd;
+  background-color: #efa69d;
+  /* color: #080c0c; */
 
   font-size: 16px;
   line-height: 1.5;
@@ -155,17 +156,21 @@ body {
 
   cursor: pointer;
 
-  transition: background-color 250ms ease, transform 250ms ease;
+  transition: background-color 250ms ease, border-color 250ms ease,
+    transform 250ms ease;
 }
 
 .order-form-submit-btn:hover,
 .order-form-submit-btn:focus {
-  background-color: #e58d82;
+  background-color: #f5fdfd;
+  border-color: #080c0c;
+
   transform: scale(1.03);
 }
 
 .order-form-submit-btn:active {
-  background-color: #c46b61;
+  background-color: #efa69d;
+  border-color: #080c0c;
 }
 
 .is-hidden {
