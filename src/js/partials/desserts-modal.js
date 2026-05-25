@@ -1,5 +1,5 @@
-import { getDessert } from '../api.js';
-
+import { getDessert } from '../exported/api.js';
+import { showError } from '../exported/helpers.js';
 import spriteUrl from '../../img/icons.svg';
 
 const refs = {
@@ -26,14 +26,6 @@ function loadRatyLibrary() {
 }
 
 function fillModalWithData(dessert) {
-  if (refs.closeBtn) {
-    refs.closeBtn.innerHTML = `
-      <svg class="modal-close-icon" width="14" height="14">
-        <use href="${spriteUrl}#icon-close"></use>
-      </svg>
-    `;
-  }
-
   const modalImg = document.querySelector('[data-modal-img]');
   const modalTitle = document.querySelector('[data-modal-title]');
   const modalPrice = document.querySelector('[data-modal-price]');
@@ -68,12 +60,13 @@ async function initRatyStars(ratingScore) {
   const RatyLib = await loadRatyLibrary();
 
   if (RatyLib) {
-    const ratyInstance = new RatyLib(refs.starsContainer, {
+    const ratyInstance = RatyLib(refs.starsContainer, {
       score: ratingScore,
       readOnly: true,
       halfShow: true,
       starType: 'i',
     });
+
     ratyInstance.init();
   }
 }
@@ -92,7 +85,7 @@ export async function openDessertModal(id) {
     if (refs.overlay) refs.overlay.addEventListener('click', onBackdropClick);
   } catch (error) {
     console.error('Помилка при отриманні десерту через api.js:', error.message);
-    alert(
+    showError(
       'На жаль, не вдалося завантажити дані про цей десерт. Спробуйте пізніше.'
     );
   }
