@@ -227,8 +227,7 @@ body.modal-open {
   margin-top: 12px;
 }
 
-/* Колір зірочок бібліотеки Raty */
 .rating-container .raty-icon {
-  color: #ffb800; /* Гарний золотий колір для зафарбованих елементів */
+  color: black;
   font-size: 20px;
 }

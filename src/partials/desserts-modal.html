@@ -1,4 +1,4 @@
-<div class="desserts-modal-overlay is-hiddens" data-dessert-modal>
+<div class="desserts-modal-overlay is-hidde" data-dessert-modal>
   <div class="desserts-modal">
     <button
       type="button"
@@ -14,7 +14,6 @@
       <div class="modal-info">
         <h2 class="modal-title" data-modal-title></h2>
 
-        <!-- Місце під зірочки raty-js -->
         <div id="dessert-raty-stars" class="rating-container"></div>
 
         <p class="modal-price" data-modal-price></p>
@@ -24,24 +23,10 @@
           Склад: <span class="modal-ingredients" data-modal-ingredients></span>
         </p>
 
-        <button type="button" class="order-btn">Перейти до замовлення</button>
+        <button type="button" class="order-btn" data-order-btn>
+          Перейти до замовлення
+        </button>
       </div>
     </div>
   </div>
 </div>
-
-<!-- Тимчасова кнопка для тестів ментора -->
-<button
-  type="button"
-  class="order-btn"
-  data-test-modal-btn
-  style="
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 999;
-    max-width: 200px;
-  "
->
-  Тест модалки 🍰
-</button>
