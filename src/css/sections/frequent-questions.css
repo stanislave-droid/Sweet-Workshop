@@ -14,7 +14,9 @@
 .faq-title {
   text-align: center;
 }
-
+.frequent-questions {
+  background-color: #f5fdfd;
+}
 .faq-list {
   width: 100%;
 }
