@@ -1,3 +1,7 @@
+body {
+  background-color: #f5fdfd;
+}
+
 .order-modal-overlay {
   position: fixed;
   inset: 0;
@@ -87,9 +91,10 @@
   display: flex;
   flex-direction: column;
 
-  margin-bottom: 16px;
+  margin-bottom: 24px;
 
-  font-size: 14px;
+  font-size: 16px;
+  line-height: 1.5;
 }
 
 .order-form-input,
@@ -126,11 +131,6 @@
   color: #878c8c;
 }
 
-/* .order-form-input:focus,
-.order-form-textarea:focus {
-  border-color: #efa69d;
-} */
-
 .order-form-input:hover,
 .order-form-textarea:hover,
 .order-form-input:focus,
@@ -144,10 +144,10 @@
 
   box-sizing: border-box;
 
-  border: none;
+  border: 2px solid #080c0c;
   border-radius: 100px;
 
-  background-color: #efa69d;
+  background-color: #f5fdfd;
 
   font-size: 16px;
   line-height: 1.5;
@@ -162,6 +162,10 @@
 .order-form-submit-btn:focus {
   background-color: #e58d82;
   transform: scale(1.03);
+}
+
+.order-form-submit-btn:active {
+  background-color: #c46b61;
 }
 
 .is-hidden {
@@ -183,8 +187,8 @@
   }
 
   .order-form-submit-btn {
-    width: 234px;
-    height: 44px;
+    width: 344px;
+    /* height: 44px; */
 
     margin: 0 auto;
   }
@@ -192,9 +196,13 @@
 
 /* Desktop */
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1440px) {
+  .order-modal-title {
+    font-size: 48px;
+  }
+
   .order-modal {
-    max-width: 866px;
+    max-width: 768px;
   }
 
   .order-form-submit-btn {
