@@ -71,7 +71,7 @@
   max-width: 375px;
 
   margin: 0 auto;
-  padding: 16px 36px;
+  padding: 16px 20px;
 
   font-weight: 400;
   font-size: 16px;
@@ -137,9 +137,9 @@
 }
 
 .header-menu__button-link {
-  display: inline-block;
+  display: block;
   margin-top: 28px;
-  padding: 4px 16px;
+  padding: 6px 20px;
 
   border: 2px solid transparent;
   border-radius: 100px;
