@@ -131,7 +131,7 @@ export function createFeedbacksMarkup(feedbacks, classes) {
   return markup;
 }
 
-function createStars(rating) {
+export function createStars(rating) {
   const fullStars = Math.floor(rating);
   const hasHalf = rating % 1 >= 0.5;
 
