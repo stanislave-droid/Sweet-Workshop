@@ -8,7 +8,7 @@ import { getDesserts } from '/js/exported/api';
 import { createDessertsMarkup } from '/js/exported/render-functions';
 import { sweetiesCardClasses } from '/js/exported/constants';
 import { showError, checkBoundariesForLoadMoreBtn } from '/js/exported/helpers';
-import { openDessertModal } from '/js/partials/desserts-modal';
+import { openDessertModal, closeModal } from '/js/partials/desserts-modal';
 
 let pageCount = 1;
 let categoryId;
@@ -67,11 +67,12 @@ export function onLoadMoreBtn() {
 }
 export function handlerButton(event) {
   if (event.target.nodeName === 'BUTTON' || event.target.nodeName === 'svg') {
-    openDessertModal(event.target.closest(`.dessert-card`).dataset.id);
+    openDessertModal(event.target.closest('.dessert-card').dataset.id);
   }
 }
 export function handlerOrderButton(event) {
   if (event.target.nodeName === 'BUTTON' || event.target.nodeName === 'svg') {
     openDessertModal(event.target.closest('[data-order-btn]').dataset.id);
+    closeModal();
   }
 }

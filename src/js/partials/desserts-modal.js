@@ -2,7 +2,7 @@ import { getDessert } from '/js/exported/api.js';
 import { showError } from '/js/exported/helpers.js';
 import spriteUrl from '/img/icons.svg';
 import { refs, sweetiesDessertsList } from '/js/exported/refs.js';
-import { handlerButton } from '/js/exported/handlers';
+import { handlerButton, handlerOrderButton } from '/js/exported/handlers';
 import { createStars } from '/js/exported/render-functions';
 
 function fillModalWithData(dessert) {
@@ -25,10 +25,11 @@ export async function openDessertModal(id) {
 
     document.body.classList.add('modal-open');
     refs.overlay.classList.remove('is-hidden');
-    refs.handlerOrderButton.dataset.order = id;
+    refs.orderBtn.dataset.id = id;
 
     window.addEventListener('keydown', onEscKeyPress);
     refs.overlay.addEventListener('click', onBackdropClick);
+    refs.orderBtn.addEventListener('click', handlerOrderButton);
   } catch (error) {
     console.error('Помилка при отриманні десерту через api.js:', error.message);
     showError(
@@ -37,12 +38,13 @@ export async function openDessertModal(id) {
   }
 }
 
-function closeModal() {
+export function closeModal() {
   document.body.classList.remove('modal-open');
   refs.overlay.classList.add('is-hidden');
 
   window.removeEventListener('keydown', onEscKeyPress);
   refs.overlay.removeEventListener('click', onBackdropClick);
+  refs.orderBtn.removeEventListener('click', handlerOrderButton);
 }
 
 function onEscKeyPress(e) {
