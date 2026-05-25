@@ -68,19 +68,19 @@ export function onLoadMoreBtn() {
 }
 
 export function handleHeaderMenuEscape(ev) {
-  if (ev.key === "Escape") {
+  if (ev.key === 'Escape') {
     closeHeaderMenu();
   }
 }
 
 export function handleHeaderMenuClick(ev) {
-  if (ev.target.closest("button") === refs.headerMenuButton) {
+  if (ev.target.closest('button') === refs.headerMenuButton) {
     if (isHeaderMenuOpen()) {
       closeHeaderMenu();
     } else {
       openHeaderMenu();
     }
-  } else if (ev.target.closest("a")) {
+  } else if (ev.target.closest('a')) {
     closeHeaderMenu();
   }
 }

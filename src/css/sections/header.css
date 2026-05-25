@@ -5,7 +5,7 @@ body.prevent-scrolling {
 .header {
   position: relative;
   background: #f5fdfd;
-  color: #080C0C;
+  color: #080c0c;
   z-index: 1;
 }
 
@@ -99,7 +99,7 @@ body.prevent-scrolling {
   }
 }
 
-.header-menu__link{
+.header-menu__link {
   display: block;
   padding: 12px 0;
 
@@ -116,17 +116,20 @@ body.prevent-scrolling {
     opacity: 0;
 
     border-bottom: 1px solid currentColor;
-    transition: top 100ms ease-out, opacity 100ms ease-out;
+    transition:
+      top 100ms ease-out,
+      opacity 100ms ease-out;
   }
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     &::after {
       opacity: 1;
     }
   }
 
   &:active {
-    color: #F19898;
+    color: #f19898;
 
     &::after {
       top: 0px;
@@ -147,18 +150,21 @@ body.prevent-scrolling {
 
   border: 2px solid transparent;
   border-radius: 100px;
-  background: #F19898;
+  background: #f19898;
 
   text-align: center;
-  transition: border-color 100ms ease-out, background 100ms ease-out;
+  transition:
+    border-color 100ms ease-out,
+    background 100ms ease-out;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     background: transparent;
     border: 2px solid #080c0c;
   }
 
   &:active {
-    background: #F5B6B6;
+    background: #f5b6b6;
   }
 }
 
@@ -177,8 +183,9 @@ body.prevent-scrolling {
   color: inherit;
   transition: color 100ms ease-out;
 
-  &:hover, &:focus {
-    color: #F19898;
+  &:hover,
+  &:focus {
+    color: #f19898;
   }
 }
 
