@@ -12,18 +12,23 @@
       </select>
     </div>
     <div class="sweeties-category-wrapper">
-      <div class="sweeties-category-list">
-        <label class="sweeties-category-label">
+      <ul class="sweeties-category-list">
+        <li>
           <input
             type="radio"
             value=""
             name="sweeties-category-btn"
             class="sweeties-category-radio-btn"
+            id="sweeties-radio"
             checked
           />
-          <div class="sweeties-category-button">Всі десерти</div>
-        </label>
-      </div>
+          <label
+            class="sweeties-category-label sweeties-category-button"
+            for="sweeties-radio"
+            >Всі десерти
+          </label>
+        </li>
+      </ul>
       <span class="sweeties-category-loader"></span>
     </div>
     <div class="sweeties-desserts-wrapper">

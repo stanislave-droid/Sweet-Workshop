@@ -15,15 +15,19 @@ export function createMarkupForSelect(dataArray) {
 export function createMarkupForCategoryButtons(dataArray) {
   const resultData = dataArray
     .map(
-      ({ _id, name }) => `<label class="sweeties-category-label">
+      ({ _id, name }) => `
+      <li>
         <input
           type="radio"
           value="${_id}"
           name="sweeties-category-btn"
           class="sweeties-category-radio-btn"
+          id="${_id}"
         />
-        <div class="sweeties-category-button">${name}</div>
-      </label>`
+        <label class="sweeties-category-label sweeties-category-button" for="${_id}">
+        ${name}
+      </label>
+      </li>`
     )
     .join('');
   return resultData;
