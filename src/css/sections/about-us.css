@@ -28,7 +28,7 @@
   position: relative;
 }
 
-.about-us__swiper > .swiper-wrapper {
+.about-us__swiper {
   margin-bottom: 48px;
 }
 
@@ -59,11 +59,9 @@
   border-radius: 16px;
 }
 
-.about-us__arrow {
+.about-us__arrow.about-us__arrow {
   position: absolute;
-}
-
-.about-us__arrow {
+  top: calc(50% - 48px - 24px);
   max-width: 48px;
   max-height: 48px;
   padding: 10px;
