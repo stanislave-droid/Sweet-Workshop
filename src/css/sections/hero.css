@@ -61,7 +61,7 @@
   color: #080c0c;
 
   background-color: #f19898;
-  border: 1px solid #f19898;
+  border: 2px solid #f19898;
   border-radius: 100px;
 
   transition:
@@ -137,7 +137,6 @@
   }
 
   .hero-title {
-    text-decoration: underline;
     font-size: 56px;
     max-width: 768px;
   }
