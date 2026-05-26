@@ -11,6 +11,9 @@ export const refs = {
   orderBtn: document.querySelector('[data-order-btn]'),
   popularList: document.querySelector('.popular-list'),
   modalReitStars: document.querySelector('.rating-container'),
+  modalOverlay: document.querySelector('.order-modal-overlay'),
+  closeModalBtn: document.querySelector('.order-modal-close-btn'),
+  orderForm: document.querySelector('.order-form'),
 };
 export const sweetiesCategoryList = document.querySelector(
   '.sweeties-category-list'
