@@ -43,7 +43,7 @@
 
 .about__description {
   margin: 24px auto 0;
-  max-width: 660px;
+  max-width: 295px;
   color: var(--color-neutral-darker);
   font-family: var(--font-family);
   font-size: 18px;
@@ -245,6 +245,9 @@
     display: flex;
   }
 }
+.about__description {
+  max-width: 660px;
+}
 
 /* ════════════════════════════════
    DESKTOP — з 1440px
@@ -274,4 +277,7 @@
   .swiper-wrapper {
     align-items: center;
   }
+}
+.about__description {
+  max-width: 768px;
 }
