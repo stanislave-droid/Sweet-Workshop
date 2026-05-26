@@ -165,6 +165,10 @@
   margin-bottom: 40px;
 }
 
+.sweeties-category-item {
+  display: none;
+}
+
 .sweeties-dessert-card {
   background-color: #f5fdfd;
   border: 1px solid #080c0c;
@@ -349,6 +353,11 @@
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
+  }
+  .sweeties-category-item {
+    display: block;
+    position: relative;
+    width: fit-content;
   }
   .sweeties-category-wrapper {
     margin-bottom: 40px;

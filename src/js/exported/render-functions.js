@@ -16,7 +16,7 @@ export function createMarkupForCategoryButtons(dataArray) {
   const resultData = dataArray
     .map(
       ({ _id, name }) => `
-      <li>
+      <li class="sweeties-category-item">
         <input
           type="radio"
           value="${_id}"
