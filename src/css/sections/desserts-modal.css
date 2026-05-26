@@ -213,7 +213,7 @@ body.modal-open {
   }
 }
 
-svg {
+.desserts-modal svg {
   flex-shrink: 0;
   width: 16px !important;
   height: 16px !important;
