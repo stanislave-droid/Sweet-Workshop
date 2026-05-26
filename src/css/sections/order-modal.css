@@ -29,6 +29,7 @@ body {
 
   width: 100%;
   max-width: 335px;
+  max-height: 95vh;
 
   padding: 64px 20px;
 
@@ -37,6 +38,9 @@ body {
   background-color: #f2f6f6;
 
   box-sizing: border-box;
+
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .order-modal-close-btn {
