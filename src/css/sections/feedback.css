@@ -25,7 +25,8 @@
   justify-content: center;
   margin-top: 40px;
   position: relative;
-  padding-bottom: 80px;
+  /* марджин 80 */
+  /* padding-bottom: 80px; */
 }
 .feedback-slide {
   border: 2px solid #080c0c;
@@ -99,25 +100,32 @@
   stroke: #cccccc !important;
 }
 
-.feedback-next {
+.feedback .swiper-button-next.feedback-next {
   right: 0;
+  transform: translateY(350%);
 }
 
-.feedback-prev {
+.feedback .swiper-button-prev.feedback-prev {
   right: 64px;
+  left: auto;
+  transform: translateY(350%);
 }
-.arrow-icon {
+.feedback-arrow .arrow-icon {
   stroke: #080c0c;
   width: 24px;
   height: 24px;
 }
 
-.feedback-pagination {
-  margin-left: 10px;
-  transform: translateY(-450%);
+.swiper-pagination.feedback-pagination {
+  /* margin-left: 10px; */
+  /* transform: translateY(-450%); */
   display: flex;
+  position: relative;
+  margin-top: 32px;
+  justify-content: center;
+  align-items: center;
   gap: 9px;
-  width: 100% !important;
+  /* width: 100% !important; */
 }
 .swiper-pagination-bullet {
   width: 8px;
@@ -148,13 +156,13 @@
     bottom: 0;
     z-index: 10;
   }
-  .feedback-prev {
-    top: 92px;
-    left: -30px;
+  .feedback .swiper-button-prev.feedback-prev {
+    right: auto;
+    left: 0;
+    transform: translate(-60%, -50%);
   }
-  .feedback-next {
-    top: 92px;
-    right: -30px !important;
+  .feedback .swiper-button-next.feedback-next {
+    transform: translate(60%, -50%);
   }
 
   .feedback-pagination {
