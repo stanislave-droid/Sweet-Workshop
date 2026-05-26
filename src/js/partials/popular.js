@@ -40,10 +40,6 @@ function runSwiper() {
     cssMode: true,
     nested: true,
     spaceBetween: 24,
-    // eventsPrefix: '134',
-    // containerModifierClass: 'popswiper-',
-    // wrapperClass: `wrapper-`,
-    // slideClass: 'popular-slide',
     navigation: {
       nextEl: '.navigation-next',
       prevEl: '.navigation-previus',
@@ -67,6 +63,4 @@ function runSwiper() {
       },
     },
   });
-  swiperPopular.el.swiper = 'lalala';
-  console.log(swiperPopular.pagination);
 }
