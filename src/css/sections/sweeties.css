@@ -449,3 +449,7 @@
   visibility: hidden;
   pointer-events: none;
 }
+
+.hide-sweeties-loader {
+  display: none;
+}
