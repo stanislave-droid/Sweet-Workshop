@@ -16,7 +16,7 @@ export function createMarkupForCategoryButtons(dataArray) {
   const resultData = dataArray
     .map(
       ({ _id, name }) => `
-      <li>
+      <li class="sweeties-category-item">
         <input
           type="radio"
           value="${_id}"
@@ -171,37 +171,10 @@ export function createStars(rating) {
   return stars;
 }
 
-export function createCardMarkup(item) {
-  return `
-    <div class="swiper-slide feedback-card">
-      <div class="card-content">
-
-        <div class="feedback-stars">
-          ${createStars(item.rate)}
-        </div>
-
-        <p class="feedback-text">
-          "${item.description}"
-        </p>
-
-        <p class="feedback-user-name">
-          ${item.author}
-        </p>
-
-      </div>
-    </div>
-  `;
-}
-
-export function createCardsMarkup(feedbacksList) {
-  return feedbacksList.map(item => createCardMarkup(item)).join('');
-}
-
 export async function renderFeedbackSection(initFeedbackSlider) {
   const { container } = refs;
 
   if (!container) return;
-
   try {
     const data = await getFeedbacks(1, 10);
     const feedbacksList = data.feedbacks;
@@ -211,7 +184,20 @@ export async function renderFeedbackSection(initFeedbackSlider) {
       return;
     }
 
-    container.innerHTML = createCardsMarkup(feedbacksList);
+    container.innerHTML = createFeedbacksMarkup(feedbacksList, {
+      li: 'swiper-slide feedback-slide',
+      content: 'card-content feedback-card',
+      rate: 'feedback-stars',
+      description: 'feedback-text',
+      author: 'feedback-user-name',
+    });
+    const starsContainers = container.querySelectorAll('.feedback-stars');
+    starsContainers.forEach(starBlock => {
+      const parent = starBlock.closest('[data-rate]');
+      const rating = Number(parent.dataset.rate);
+
+      starBlock.innerHTML = createStars(rating);
+    });
 
     initFeedbackSlider();
   } catch (error) {

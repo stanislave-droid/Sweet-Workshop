@@ -53,6 +53,6 @@ getCategories()
     showError(error);
   })
   .finally(() => {
-    sweetiesCategoryLoader.hidden = true;
-    sweetiesDessertsLoader.hidden = true;
+    sweetiesCategoryLoader.classList.add('hide-sweeties-loader');
+    sweetiesDessertsLoader.classList.add('hide-sweeties-loader');
   });

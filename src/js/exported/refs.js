@@ -1,8 +1,8 @@
 export const refs = {
   container: document.getElementById('feedbacks-container'),
   body: document.querySelector('body'),
-  headerMenu: document.querySelector(".header"),
-  headerMenuButton: document.querySelector("#header-menu-button"),
+  headerMenu: document.querySelector('.header'),
+  headerMenuButton: document.querySelector('#header-menu-button'),
   overlay: document.querySelector('[data-dessert-modal]'),
   closeBtn: document.querySelector('[data-modal-close]'),
   starsContainer: document.querySelector('#dessert-raty-stars'),
