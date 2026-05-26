@@ -179,6 +179,12 @@ body {
   pointer-events: none;
 }
 
+html.modal-open,
+body.modal-open {
+  overflow-y: hidden;
+  overscroll-behavior: contain;
+}
+
 /* Tablet */
 
 @media only screen and (min-width: 768px) {
