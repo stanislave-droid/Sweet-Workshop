@@ -9,6 +9,16 @@
   overflow-x: hidden;
 }
 
+.about-us-gallery {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.about-us-gallery-item {
+  border-radius: 16px;
+}
+
 .about__container {
   display: flex;
   flex-direction: column;
