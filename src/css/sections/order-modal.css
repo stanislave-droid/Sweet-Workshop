@@ -1,5 +1,227 @@
+body {
+  background-color: #f5fdfd;
+}
+
 .order-modal-overlay {
+  position: fixed;
+  inset: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgba(0, 0, 0, 0.4);
+
+  opacity: 1;
+  visibility: visible;
+
+  transition: opacity 250ms ease, visibility 250ms ease;
+
+  z-index: 1000;
 }
 
 .order-modal {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+
+  width: 100%;
+  max-width: 335px;
+  max-height: 95%;
+
+  padding: 64px 20px;
+
+  border-radius: 16px;
+
+  background-color: #f2f6f6;
+
+  box-sizing: border-box;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.order-modal-close-btn {
+  position: absolute;
+
+  top: 16px;
+  right: 16px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 32px;
+  height: 32px;
+
+  border: none;
+  background-color: transparent;
+
+  padding: 0;
+
+  cursor: pointer;
+
+  transition: transform 250ms ease;
+}
+
+.order-modal-close-icon {
+  width: 24px;
+  height: 24px;
+
+  stroke: #1b1b1b;
+  fill: none;
+}
+
+.order-modal-close-btn:hover,
+.order-modal-close-btn:focus {
+  transform: scale(1.1);
+}
+
+.order-modal-title {
+  text-align: center;
+
+  font-size: 36px;
+  line-height: 1.2;
+}
+
+.order-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.order-form-label {
+  display: flex;
+  flex-direction: column;
+
+  margin-bottom: 24px;
+
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.order-form-input,
+.order-form-textarea {
+  width: 100%;
+
+  margin-top: 8px;
+  padding: 12px;
+
+  box-sizing: border-box;
+
+  border: 2px solid #080c0c;
+  border-radius: 12px;
+
+  background-color: transparent;
+
+  outline: transparent;
+
+  transition: border-color 250ms ease;
+}
+
+.order-form-input {
+  height: 40px;
+}
+
+.order-form-textarea {
+  min-height: 140px;
+
+  resize: none;
+}
+
+.order-form-input::placeholder,
+.order-form-textarea::placeholder {
+  color: #878c8c;
+}
+
+.order-form-input:hover,
+.order-form-textarea:hover,
+.order-form-input:focus,
+.order-form-textarea:focus {
+  border-color: #efa69d;
+}
+
+.order-form-submit-btn {
+  width: 100%;
+  height: 44px;
+
+  box-sizing: border-box;
+
+  border: 2px solid transparent;
+  border-radius: 100px;
+
+  background-color: #efa69d;
+  /* color: #080c0c; */
+
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition: background-color 250ms ease, border-color 250ms ease,
+    transform 250ms ease;
+}
+
+.order-form-submit-btn:hover,
+.order-form-submit-btn:focus {
+  background-color: #f5fdfd;
+  border-color: #080c0c;
+
+  transform: scale(1.03);
+}
+
+.order-form-submit-btn:active {
+  background-color: #efa69d;
+  border-color: #080c0c;
+}
+
+.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+html.modal-open,
+body.modal-open {
+  overflow-y: hidden;
+  overscroll-behavior: contain;
+}
+
+/* Tablet */
+
+@media only screen and (min-width: 768px) {
+  .order-modal {
+    max-width: 704px;
+    padding: 64px 32px;
+  }
+
+  .order-form-textarea {
+    min-height: 180px;
+  }
+
+  .order-form-submit-btn {
+    width: 344px;
+    /* height: 44px; */
+
+    margin: 0 auto;
+  }
+}
+
+/* Desktop */
+
+@media only screen and (min-width: 1440px) {
+  .order-modal-title {
+    font-size: 48px;
+  }
+
+  .order-modal {
+    max-width: 768px;
+  }
+
+  .order-form-submit-btn {
+    width: 196px;
+    height: 44px;
+  }
 }

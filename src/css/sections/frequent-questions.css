@@ -1,2 +1,120 @@
+/* забрала дефолтну рамку */
+.ac.faq-item {
+  border: none;
+}
+
+/* ховаємо дефолтний + */
+.ac .ac-trigger::after {
+  display: none;
+}
+/* забираємо дефолтний сірий фокус */
+.ac.faq-item .ac-trigger:focus {
+  color: #080c0c;
+}
+.faq-title {
+  text-align: center;
+}
 .frequent-questions {
+  background-color: #f5fdfd;
+}
+.faq-list {
+  width: 100%;
+}
+
+.ac.faq-item {
+  border-bottom: 2px solid #080c0c;
+  max-width: 335px;
+  margin: 0;
+}
+
+.ac.faq-item:first-child {
+  border-top: 2px solid #080c0c;
+}
+
+.faq-title {
+  margin-bottom: 40px;
+}
+
+.ac-header.faq-subtitle {
+  font-weight: 600;
+  font-size: 16px;
+}
+.ac .ac-panel .ac-text.faq-text {
+  padding: 0px;
+  margin-bottom: 20px;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #080c0c;
+}
+
+.ac .ac-trigger.faq-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  padding: 20px 0;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #080c0c;
+  background-color: #f5fdfd;
+}
+
+.ac-text.faq-text {
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.faq-icon {
+  transition: transform 0.3s ease;
+  fill: #080c0c;
+  stroke-width: 1px;
+  stroke: #080c0c;
+}
+.ac.is-active .faq-icon {
+  transform: rotate(180deg);
+}
+.ac-panel.faq-panel {
+  background-color: #f5fdfd;
+}
+
+span {
+  display: block;
+}
+@media only screen and (min-width: 768px) {
+  .frequent-questions {
+    max-width: 704px;
+    padding: 64px 0;
+    margin: 0 auto;
+  }
+  .ac-trigger {
+    font-size: 18px;
+    padding: 22px 0;
+  }
+  .ac.faq-item {
+    max-width: 704px;
+  }
+
+  .ac-text {
+    padding-bottom: 24px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .frequent-questions {
+    max-width: 865px;
+    padding: 80px 0;
+    margin: 0 auto;
+  }
+  .faq-title {
+    font-size: 48px;
+    margin-bottom: 80px;
+  }
+  .ac.faq-item {
+    max-width: 865px;
+  }
 }

@@ -1,3 +1,42 @@
-<section class="sweeties">
-  <div class="container"></div>
+<section class="sweeties" id="sweets">
+  <div class="container">
+    <div class="sweeties-text-content-wrapper">
+      <div class="sweeties-text-wrapper">
+        <h2 class="sweeties-title">Солодощі</h2>
+        <p class="sweeties-desc">
+          Спробуйте наші смачні десерти, які вас здивують!
+        </p>
+      </div>
+      <select id="sweeties-category-select" class="sw-cat-select">
+        <option value="" selected>Всі десерти</option>
+      </select>
+    </div>
+    <div class="sweeties-category-wrapper">
+      <ul class="sweeties-category-list">
+        <li class="sweeties-category-item">
+          <input
+            type="radio"
+            value=""
+            name="sweeties-category-btn"
+            class="sweeties-category-radio-btn"
+            id="sweeties-radio"
+            checked
+          />
+          <label
+            class="sweeties-category-label sweeties-category-button"
+            for="sweeties-radio"
+            >Всі десерти
+          </label>
+        </li>
+      </ul>
+      <span class="sweeties-category-loader"></span>
+    </div>
+    <div class="sweeties-desserts-wrapper">
+      <ul class="sweeties-desserts-list"></ul>
+      <span class="sweeties-desserts-loader"></span>
+    </div>
+    <button type="button" class="sweeties-load-more-btn is-hidden">
+      Завантажити ще
+    </button>
+  </div>
 </section>
