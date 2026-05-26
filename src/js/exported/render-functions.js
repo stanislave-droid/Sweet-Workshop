@@ -15,15 +15,19 @@ export function createMarkupForSelect(dataArray) {
 export function createMarkupForCategoryButtons(dataArray) {
   const resultData = dataArray
     .map(
-      ({ _id, name }) => `<label class="sweeties-category-label">
+      ({ _id, name }) => `
+      <li class="sweeties-category-item">
         <input
           type="radio"
           value="${_id}"
           name="sweeties-category-btn"
           class="sweeties-category-radio-btn"
+          id="${_id}"
         />
-        <div class="sweeties-category-button">${name}</div>
-      </label>`
+        <label class="sweeties-category-label sweeties-category-button" for="${_id}">
+        ${name}
+      </label>
+      </li>`
     )
     .join('');
   return resultData;
@@ -84,7 +88,7 @@ export function createDessertsMarkup(desserts, classes) {
             <p class="${classes.price}">${dessert.price} грн</p>
             <button class="${classes.button}">
               <svg class="${classes.svg}" width="24" height="24">
-                <use href="/img/icons.svg#icon-arrow_outward"></use>
+                <use href="/Sweet-Workshop/assets/icons-DlAvQgEL.svg#icon-arrow_outward"></use>
               </svg>
             </button>
           </div>
@@ -131,7 +135,7 @@ export function createFeedbacksMarkup(feedbacks, classes) {
   return markup;
 }
 
-function createStars(rating) {
+export function createStars(rating) {
   const fullStars = Math.floor(rating);
   const hasHalf = rating % 1 >= 0.5;
 
@@ -167,37 +171,10 @@ function createStars(rating) {
   return stars;
 }
 
-export function createCardMarkup(item) {
-  return `
-    <div class="swiper-slide feedback-card">
-      <div class="card-content">
-
-        <div class="feedback-stars">
-          ${createStars(item.rate)}
-        </div>
-
-        <p class="feedback-text">
-          "${item.description}"
-        </p>
-
-        <p class="feedback-user-name">
-          ${item.author}
-        </p>
-
-      </div>
-    </div>
-  `;
-}
-
-export function createCardsMarkup(feedbacksList) {
-  return feedbacksList.map(item => createCardMarkup(item)).join('');
-}
-
 export async function renderFeedbackSection(initFeedbackSlider) {
   const { container } = refs;
 
   if (!container) return;
-
   try {
     const data = await getFeedbacks(1, 10);
     const feedbacksList = data.feedbacks;
@@ -207,7 +184,20 @@ export async function renderFeedbackSection(initFeedbackSlider) {
       return;
     }
 
-    container.innerHTML = createCardsMarkup(feedbacksList);
+    container.innerHTML = createFeedbacksMarkup(feedbacksList, {
+      li: 'swiper-slide feedback-slide',
+      content: 'card-content feedback-card',
+      rate: 'feedback-stars',
+      description: 'feedback-text',
+      author: 'feedback-user-name',
+    });
+    const starsContainers = container.querySelectorAll('.feedback-stars');
+    starsContainers.forEach(starBlock => {
+      const parent = starBlock.closest('[data-rate]');
+      const rating = Number(parent.dataset.rate);
+
+      starBlock.innerHTML = createStars(rating);
+    });
 
     initFeedbackSlider();
   } catch (error) {

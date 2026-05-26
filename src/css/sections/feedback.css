@@ -27,7 +27,7 @@
   position: relative;
   padding-bottom: 80px;
 }
-.swiper-slide {
+.feedback-slide {
   border: 2px solid #080c0c;
   border-radius: 16px;
   padding: 32px;
@@ -38,7 +38,7 @@
   height: 209px !important;
   background-color: #f5fdfd;
 }
-.card-content {
+.feedback-card {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -87,6 +87,7 @@
   transition: background-color 0.3s ease;
 }
 .swiper-button-disabled {
+  cursor: not-allowed;
   background: #f5fdfd;
 }
 
@@ -98,12 +99,12 @@
   stroke: #cccccc !important;
 }
 
-.swiper-button-next {
-  right: 0 !important;
+.feedback-next {
+  right: 0;
 }
 
-.swiper-button-prev {
-  right: 64px !important;
+.feedback-prev {
+  right: 64px;
 }
 .arrow-icon {
   stroke: #080c0c;
@@ -111,10 +112,10 @@
   height: 24px;
 }
 
-.swiper-pagination {
+.feedback-pagination {
   margin-left: 10px;
   transform: translateY(-450%);
-  display: flex !important;
+  display: flex;
   gap: 9px;
   width: 100% !important;
 }
@@ -136,7 +137,7 @@
   .feedback-slider-container {
     padding-bottom: 48px;
   }
-  .swiper-slide {
+  .feedback-slide {
     padding: 16px;
     height: 233px !important;
   }
@@ -147,16 +148,16 @@
     bottom: 0;
     z-index: 10;
   }
-  .swiper-button-prev {
+  .feedback-prev {
     top: 92px;
     left: -30px;
   }
-  .swiper-button-next {
+  .feedback-next {
     top: 92px;
     right: -30px !important;
   }
 
-  .swiper-pagination {
+  .feedback-pagination {
     flex-direction: row !important;
     justify-content: center !important;
     align-items: center !important;

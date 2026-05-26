@@ -13,6 +13,7 @@ import { getCategories, getDesserts } from '/js/exported/api';
 import { onCategoryChange } from '/js/exported/handlers';
 import SlimSelect from 'slim-select';
 import 'slim-select/styles';
+import { showError } from '/js/exported/helpers';
 
 const slimSelect = new SlimSelect({
   select: sweetiesCategorySelect,
@@ -47,12 +48,11 @@ getCategories()
     sweetiesCategoryList.addEventListener('change', ({ target: { value } }) => {
       onCategoryChange(value === '' ? undefined : value);
     });
-    // sweetiesDessertsList.addEventListener("click", onCardButtonClick); For modal
   })
   .catch(error => {
-    console.log(error);
+    showError(error);
   })
   .finally(() => {
-    sweetiesCategoryLoader.hidden = true;
-    sweetiesDessertsLoader.hidden = true;
+    sweetiesCategoryLoader.classList.add('hide-sweeties-loader');
+    sweetiesDessertsLoader.classList.add('hide-sweeties-loader');
   });

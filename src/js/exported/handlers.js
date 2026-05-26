@@ -3,18 +3,31 @@ import {
   sweetiesLoadMoreBtn,
   sweetiesCategoryLoader,
   sweetiesDessertsLoader,
+  refs,
 } from '/js/exported/refs';
-import { getDesserts } from '/js/exported/api';
+import { getDesserts, postOrder } from '/js/exported/api';
 import { createDessertsMarkup } from '/js/exported/render-functions';
 import { sweetiesCardClasses } from '/js/exported/constants';
-import { showError, checkBoundariesForLoadMoreBtn } from '/js/exported/helpers';
+import {
+  openHeaderMenu,
+  closeHeaderMenu,
+  isHeaderMenuOpen,
+} from '/js/partials/header.js';
+import {
+  showError,
+  checkBoundariesForLoadMoreBtn,
+  showOrderError,
+  showOrderSuccess,
+} from '/js/exported/helpers';
+import { openDessertModal, closeModal } from '/js/partials/desserts-modal';
+import { openModal, currentDessertId } from '/js/partials/order-modal';
 
 let pageCount = 1;
 let categoryId;
 
 export function onCategoryChange(id) {
-  sweetiesDessertsLoader.hidden = false;
-  sweetiesCategoryLoader.hidden = false;
+  sweetiesDessertsLoader.classList.remove('hide-sweeties-loader');
+  sweetiesCategoryLoader.classList.remove('hide-sweeties-loader');
   getDesserts(1, id)
     .then(({ desserts, ...args }) => {
       sweetiesDessertsList.innerHTML = createDessertsMarkup(
@@ -37,13 +50,13 @@ export function onCategoryChange(id) {
       showError(error.message);
     })
     .finally(() => {
-      sweetiesDessertsLoader.hidden = true;
-      sweetiesCategoryLoader.hidden = true;
+      sweetiesDessertsLoader.classList.add('hide-sweeties-loader');
+      sweetiesCategoryLoader.classList.add('hide-sweeties-loader');
     });
 }
 
 export function onLoadMoreBtn() {
-  sweetiesDessertsLoader.hidden = false;
+  sweetiesDessertsLoader.classList.remove('hide-sweeties-loader');
   sweetiesLoadMoreBtn.disabled = true;
   getDesserts(++pageCount, categoryId)
     .then(({ desserts, ...args }) => {
@@ -60,7 +73,7 @@ export function onLoadMoreBtn() {
       showError(error.message);
     })
     .finally(() => {
-      sweetiesDessertsLoader.hidden = true;
+      sweetiesDessertsLoader.classList.add('hide-sweeties-loader');
       sweetiesLoadMoreBtn.disabled = false;
     });
 }
@@ -70,4 +83,107 @@ export function handlerButton(event) {
     console.log(event.target.closest(`.dessert-card`).dataset.id);
     return event.target.closest(`.dessert-card`).dataset.id;
   }
+}
+export function handleHeaderMenuEscape(ev) {
+  if (ev.key === 'Escape') {
+    closeHeaderMenu();
+  }
+}
+
+export function handleHeaderMenuClick(ev) {
+  if (ev.target.closest('button') === refs.headerMenuButton) {
+    if (isHeaderMenuOpen()) {
+      closeHeaderMenu();
+    } else {
+      openHeaderMenu();
+    }
+  } else if (ev.target.closest('a')) {
+    closeHeaderMenu();
+  }
+}
+export function handlerButton(event) {
+  if (event.target.nodeName === 'BUTTON' || event.target.nodeName === 'svg') {
+    openDessertModal(event.target.closest('.dessert-card').dataset.id);
+  }
+}
+export function handlerOrderButton(event) {
+  if (event.target.nodeName === 'BUTTON' || event.target.nodeName === 'svg') {
+    openModal(event.target.closest('[data-order-btn]').dataset.id);
+    closeModal();
+  }
+}
+
+export function closeOrderModal(event) {
+  if (event.target.classList.contains('order-modal-close-btn')) {
+    closeOrder();
+  }
+}
+
+export function onEscKeyPress(e) {
+  if (e.code === 'Escape') closeOrder();
+}
+
+export function closeOrder() {
+  refs.modalOverlay.classList.add('is-hidden');
+  refs.closeModalBtn.removeEventListener('click', closeModal);
+  refs.modalOverlay.removeEventListener('click', onBackdropClick);
+  refs.orderForm.removeEventListener('submit', handlerOrderSubmit);
+  document.body.style.overflow = '';
+  window.removeEventListener('keydown', onEscKeyPress);
+}
+
+export function onBackdropClick(e) {
+  if (e.target.classList.contains('order-modal-overlay')) closeOrder();
+}
+
+export function handlerOrderSubmit(event) {
+  event.preventDefault();
+
+  const elements = event.target.elements;
+
+  const data = {
+    name: elements.name.value.trim(),
+
+    phone: elements.phone.value.trim(),
+
+    comment: elements.comment.value.trim(),
+
+    dessertId: currentDessertId,
+  };
+
+  // NAME
+
+  if (data.name.length < 2 || data.name.length > 48) {
+    showOrderError("Ім'я повинно містити від 2 до 48 символів");
+
+    return;
+  }
+
+  // PHONE
+
+  if (data.phone.length !== 12) {
+    showOrderError('Номер телефону повинен містити 12 цифр');
+
+    return;
+  }
+
+  // COMMENT
+
+  if (data.comment.length < 2 || data.comment.length > 256) {
+    showOrderError('Коментар повинен містити від 2 до 256 символів');
+
+    return;
+  }
+
+  postOrder(data)
+    .then(({ orderNum }) => {
+      showOrderSuccess(orderNum);
+      closeOrder();
+    })
+    .catch(error => {
+      showOrderError(error.message);
+    })
+    .finally(() => {
+      event.target.reset();
+    });
 }

@@ -121,9 +121,7 @@
 }
 
 .sweeties-category-label {
-  position: relative;
-  display: flex;
-  width: fit-content;
+  display: block;
 }
 
 .sweeties-category-radio-btn {
@@ -165,6 +163,10 @@
   gap: 32px;
   justify-content: center;
   margin-bottom: 40px;
+}
+
+.sweeties-category-item {
+  display: none;
 }
 
 .sweeties-dessert-card {
@@ -254,6 +256,7 @@
 .sweeties-load-more-btn {
   background-color: #f19898;
   border: 1px solid #f19898;
+  color: #080c0c;
   border-radius: 100px;
   padding: 9px 23px;
   width: 100%;
@@ -350,6 +353,11 @@
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
+  }
+  .sweeties-category-item {
+    display: block;
+    position: relative;
+    width: fit-content;
   }
   .sweeties-category-wrapper {
     margin-bottom: 40px;
@@ -450,4 +458,8 @@
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+}
+
+.hide-sweeties-loader {
+  display: none;
 }

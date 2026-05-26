@@ -61,6 +61,7 @@
   font-size: 18px;
   line-height: 1.5;
   color: #080c0c;
+  background-color: #f5fdfd;
 }
 
 .ac-text.faq-text {
@@ -76,6 +77,13 @@
 }
 .ac.is-active .faq-icon {
   transform: rotate(180deg);
+}
+.ac-panel.faq-panel {
+  background-color: #f5fdfd;
+}
+
+span {
+  display: block;
 }
 @media only screen and (min-width: 768px) {
   .frequent-questions {

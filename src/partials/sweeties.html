@@ -1,4 +1,4 @@
-<section class="sweeties">
+<section class="sweeties" id="sweets">
   <div class="container">
     <div class="sweeties-text-content-wrapper">
       <div class="sweeties-text-wrapper">
@@ -13,16 +13,21 @@
     </div>
     <div class="sweeties-category-wrapper">
       <ul class="sweeties-category-list">
-        <label class="sweeties-category-label">
+        <li class="sweeties-category-item">
           <input
             type="radio"
             value=""
             name="sweeties-category-btn"
             class="sweeties-category-radio-btn"
+            id="sweeties-radio"
             checked
           />
-          <div class="sweeties-category-button">Всі десерти</div>
-        </label>
+          <label
+            class="sweeties-category-label sweeties-category-button"
+            for="sweeties-radio"
+            >Всі десерти
+          </label>
+        </li>
       </ul>
       <span class="sweeties-category-loader"></span>
     </div>
