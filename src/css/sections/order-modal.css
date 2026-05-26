@@ -3,6 +3,8 @@ body {
 }
 
 .order-modal-overlay {
+  overflow-y: hidden;
+  overscroll-behavior: contain;
   position: fixed;
   inset: 0;
 
@@ -41,6 +43,9 @@ body {
 
   overflow-y: auto;
   overflow-x: hidden;
+
+  /* overflow: auto;
+  scrollbar-gutter: stable; */
 }
 
 .order-modal-close-btn {
@@ -152,7 +157,6 @@ body {
   border-radius: 100px;
 
   background-color: #efa69d;
-  /* color: #080c0c; */
 
   font-size: 16px;
   line-height: 1.5;
@@ -183,11 +187,10 @@ body {
   pointer-events: none;
 }
 
-html.modal-open,
+/* html.modal-open,
 body.modal-open {
-  overflow-y: hidden;
-  overscroll-behavior: contain;
-}
+  overflow: hidden;
+} */
 
 /* Tablet */
 
