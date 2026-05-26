@@ -26,8 +26,8 @@ let pageCount = 1;
 let categoryId;
 
 export function onCategoryChange(id) {
-  sweetiesDessertsLoader.hidden = false;
-  sweetiesCategoryLoader.hidden = false;
+  sweetiesDessertsLoader.classList.remove('hide-sweeties-loader');
+  sweetiesCategoryLoader.classList.remove('hide-sweeties-loader');
   getDesserts(1, id)
     .then(({ desserts, ...args }) => {
       sweetiesDessertsList.innerHTML = createDessertsMarkup(
@@ -50,13 +50,13 @@ export function onCategoryChange(id) {
       showError(error.message);
     })
     .finally(() => {
-      sweetiesDessertsLoader.hidden = true;
-      sweetiesCategoryLoader.hidden = true;
+      sweetiesDessertsLoader.classList.add('hide-sweeties-loader');
+      sweetiesCategoryLoader.classList.add('hide-sweeties-loader');
     });
 }
 
 export function onLoadMoreBtn() {
-  sweetiesDessertsLoader.hidden = false;
+  sweetiesDessertsLoader.classList.remove('hide-sweeties-loader');
   sweetiesLoadMoreBtn.disabled = true;
   getDesserts(++pageCount, categoryId)
     .then(({ desserts, ...args }) => {
@@ -73,7 +73,7 @@ export function onLoadMoreBtn() {
       showError(error.message);
     })
     .finally(() => {
-      sweetiesDessertsLoader.hidden = true;
+      sweetiesDessertsLoader.classList.add('hide-sweeties-loader');
       sweetiesLoadMoreBtn.disabled = false;
     });
 }
