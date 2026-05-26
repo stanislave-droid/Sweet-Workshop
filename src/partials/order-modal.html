@@ -1,3 +1,51 @@
-<div class="order-modal-overlay">
-  <div class="order-modal"></div>
+<div class="order-modal-overlay is-hidden">
+  <div class="order-modal">
+    <!-- <button class="order-modal-close-btn" type="button">✕</button> -->
+
+    <button class="order-modal-close-btn" type="button">
+      <svg class="order-modal-close-icon" width="24" height="24">
+        <use href="/img/icons.svg#icon-close"></use>
+      </svg>
+    </button>
+
+    <h2 class="order-modal-title">Оформлення замовлення</h2>
+
+    <form class="order-form">
+      <label class="order-form-label">
+        Ім’я*
+        <input
+          type="text"
+          name="name"
+          class="order-form-input"
+          placeholder="Вікторія"
+          required
+          minlength="2"
+        />
+      </label>
+
+      <label class="order-form-label">
+        Телефон*
+        <input
+          type="tel"
+          name="phone"
+          class="order-form-input"
+          placeholder="38 0__ _______"
+          required
+        />
+      </label>
+
+      <label class="order-form-label">
+        Коментар*
+        <textarea
+          name="comment"
+          class="order-form-textarea"
+          placeholder="Ваш коментар"
+        ></textarea>
+      </label>
+
+      <button type="submit" class="order-form-submit-btn">
+        Надіслати заявку
+      </button>
+    </form>
+  </div>
 </div>
