@@ -21,7 +21,7 @@
     <script type="module" crossorigin src="/Sweet-Workshop/index.js"></script>
     <link rel="modulepreload" crossorigin href="/Sweet-Workshop/assets/vendor-D9qh3azH.js">
     <link rel="stylesheet" crossorigin href="/Sweet-Workshop/assets/vendor-BLQEKC2z.css">
-    <link rel="stylesheet" crossorigin href="/Sweet-Workshop/assets/index-DZWpHyeY.css">
+    <link rel="stylesheet" crossorigin href="/Sweet-Workshop/assets/index-BEpvbr7Q.css">
   </head>
   <body>
     <header class="header">
@@ -91,18 +91,23 @@
       </select>
     </div>
     <div class="sweeties-category-wrapper">
-      <div class="sweeties-category-list">
-        <label class="sweeties-category-label">
+      <ul class="sweeties-category-list">
+        <li>
           <input
             type="radio"
             value=""
             name="sweeties-category-btn"
             class="sweeties-category-radio-btn"
+            id="sweeties-radio"
             checked
           />
-          <div class="sweeties-category-button">Всі десерти</div>
-        </label>
-      </div>
+          <label
+            class="sweeties-category-label sweeties-category-button"
+            for="sweeties-radio"
+            >Всі десерти
+          </label>
+        </li>
+      </ul>
       <span class="sweeties-category-loader"></span>
     </div>
     <div class="sweeties-desserts-wrapper">
@@ -114,6 +119,7 @@
     </button>
   </div>
 </section>
+
       <section class="about-us">
   <div class="container"></div>
 </section>
