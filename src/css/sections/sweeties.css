@@ -121,9 +121,7 @@
 }
 
 .sweeties-category-label {
-  position: relative;
-  display: flex;
-  width: fit-content;
+  display: block;
 }
 
 .sweeties-category-radio-btn {
