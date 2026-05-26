@@ -88,7 +88,7 @@ export function createDessertsMarkup(desserts, classes) {
             <p class="${classes.price}">${dessert.price} грн</p>
             <button class="${classes.button}">
               <svg class="${classes.svg}" width="24" height="24">
-                <use href="/img/icons.svg#icon-arrow_outward"></use>
+                <use href="/Sweet-Workshop/assets/icons-DlAvQgEL.svg#icon-arrow_outward"></use>
               </svg>
             </button>
           </div>
