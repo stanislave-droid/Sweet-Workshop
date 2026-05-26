@@ -19,3 +19,6 @@ export const sweetiesLoadMoreBtn = document.querySelector(
 export const sweetiesDessertsLoader = document.querySelector(
   '.sweeties-desserts-loader'
 );
+
+export const loaderPopular = document.querySelector('.popular-loader');
+export const popularList = document.querySelector('.popular-list');
