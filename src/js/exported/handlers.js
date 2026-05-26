@@ -8,6 +8,8 @@ import {
 import { getDesserts, postOrder } from '/js/exported/api';
 import { createDessertsMarkup } from '/js/exported/render-functions';
 import { sweetiesCardClasses } from '/js/exported/constants';
+import { showError, checkBoundariesForLoadMoreBtn } from '/js/exported/helpers';
+import { openHeaderMenu, closeHeaderMenu, isHeaderMenuOpen } from '/js/partials/header.js';
 import {
   showError,
   checkBoundariesForLoadMoreBtn,
@@ -71,6 +73,24 @@ export function onLoadMoreBtn() {
       sweetiesDessertsLoader.hidden = true;
       sweetiesLoadMoreBtn.disabled = false;
     });
+}
+
+export function handleHeaderMenuEscape(ev) {
+  if (ev.key === 'Escape') {
+    closeHeaderMenu();
+  }
+}
+
+export function handleHeaderMenuClick(ev) {
+  if (ev.target.closest('button') === refs.headerMenuButton) {
+    if (isHeaderMenuOpen()) {
+      closeHeaderMenu();
+    } else {
+      openHeaderMenu();
+    }
+  } else if (ev.target.closest('a')) {
+    closeHeaderMenu();
+  }
 }
 export function handlerButton(event) {
   if (event.target.nodeName === 'BUTTON' || event.target.nodeName === 'svg') {
