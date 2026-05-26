@@ -78,6 +78,13 @@
 .ac.is-active .faq-icon {
   transform: rotate(180deg);
 }
+.ac-panel.faq-panel {
+  background-color: #f5fdfd;
+}
+
+span {
+  display: block;
+}
 @media only screen and (min-width: 768px) {
   .frequent-questions {
     max-width: 704px;
