@@ -2,6 +2,8 @@ import axios from 'axios';
 import Swiper from 'swiper';
 import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
+// import 'swiper/css/pagination';
+// import 'swiper/css/navigation';
 import { ApiBaseURL } from '/js/exported/constants.js';
 import { renderFeedbackSection } from '/js/exported/render-functions.js';
 
@@ -35,6 +37,8 @@ function initFeedbackSlider() {
       clickable: true,
       dynamicBullets: true,
       dynamicMainBullets: 4,
+      bulletClass: 'swiper-pagination-bullet',
+      bulletActiveClass: 'swiper-pagination-bullet-active',
     },
   });
 }
