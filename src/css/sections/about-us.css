@@ -1,3 +1,7 @@
+@import 'swiper/css';
+
+
+
 .about-us__title {
   margin-bottom: 24px;
   font-weight: 700;
@@ -20,6 +24,14 @@
   text-align: center;
 }
 
+.about-us__gallery {
+  position: relative;
+}
+
+.about-us__swiper > .swiper-wrapper {
+  margin-bottom: 40px;
+}
+
 @media (max-width: 768px) {
   .about-us__swiper > .swiper-wrapper {
     display: flex;
@@ -36,6 +48,69 @@
   border: none;
 }
 
+@media (max-width: 768px) {
+  .about-us__slide.about-us__slide {
+     width: 100% !important;
+     height: auto !important;
+  }
+}
+
 .about-us__image {
   border-radius: 16px;
+}
+
+.about-us__arrow {
+  position: absolute;
+}
+
+.about-us__arrow {
+  max-width: 48px;
+  max-height: 48px;
+  padding: 10px;
+
+  background: #f5fdfd;
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #080c0c;
+
+  /*
+   * Large enough size in absolute units causes browser to clamp the radius to
+   * shorter side, thus avoiding elliptical corners
+   */
+  border-radius: 100vh;
+  border-color: #080c0c;
+
+  z-index: 10;
+
+  transition:
+    background 100ms ease-out,
+    border-color 100ms ease-out;
+
+  &:hover, &:focus {
+    background: #f19898;
+    border-color: #080c0c;
+    outline: none;
+  }
+
+  &:active {
+    background: #c07979;
+    border-color: #080c0c;
+    outline: none;
+  }
+
+  &:disabled {
+    background: #f5fdfd;
+    border-color: #f19898;
+    opacity: 0.3;
+    pointer-events: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-us__arrow.about-us__arrow,
+  .about-us__pagination.about-us__pagination {
+    display: none !important;
+  }
 }

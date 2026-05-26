@@ -26,12 +26,12 @@ function initFeedbackSlider() {
     },
 
     navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
+      nextEl: '.swiper-button-next.feedback-arrow',
+      prevEl: '.swiper-button-prev.feedback-arrow',
     },
 
     pagination: {
-      el: '.swiper-pagination',
+      el: '.swiper-pagination.feedback-pagination',
       clickable: true,
       dynamicBullets: true,
       dynamicMainBullets: 4,
