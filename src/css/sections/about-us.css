@@ -1,7 +1,5 @@
 @import 'swiper/css';
 
-
-
 .about-us__title {
   margin-bottom: 24px;
   font-weight: 700;
@@ -103,6 +101,14 @@
     background: #f5fdfd;
     opacity: 0.3;
     pointer-events: none;
+  }
+
+  &.swiper-button-prev {
+    left: -24px;
+  }
+
+  &.swiper-button-next {
+    right: -24px;
   }
 }
 
