@@ -21,7 +21,7 @@
     <script type="module" crossorigin src="/Sweet-Workshop/index.js"></script>
     <link rel="modulepreload" crossorigin href="/Sweet-Workshop/assets/vendor-D9qh3azH.js">
     <link rel="stylesheet" crossorigin href="/Sweet-Workshop/assets/vendor-BLQEKC2z.css">
-    <link rel="stylesheet" crossorigin href="/Sweet-Workshop/assets/index-Bh4QNdDH.css">
+    <link rel="stylesheet" crossorigin href="/Sweet-Workshop/assets/index-0htAZ_1a.css">
   </head>
   <body>
     <header class="header">
@@ -130,26 +130,33 @@
       Найкращі десерти, які я коли-небудь куштував!
     </p>
     <div class="feedback-slider-container">
-      <button type="button" class="swiper-button-prev feedback-arrow">
+      <button
+        type="button"
+        class="swiper-button-prev feedback-prev feedback-arrow"
+      >
         <svg class="arrow-icon" width="48" height="48">
           <use href="/Sweet-Workshop/assets/icons-DlAvQgEL.svg#icon-arrow_back"></use>
         </svg>
       </button>
 
       <div class="swiper feedback-slider">
-        <div class="swiper-wrapper" id="feedbacks-container"></div>
+        <ul class="swiper-wrapper feedback-list" id="feedbacks-container"></ul>
       </div>
 
-      <button type="button" class="swiper-button-next feedback-arrow">
+      <button
+        type="button"
+        class="swiper-button-next feedback-next feedback-arrow"
+      >
         <svg class="arrow-icon" width="24" height="24">
           <use href="/Sweet-Workshop/assets/icons-DlAvQgEL.svg#icon-arrow_forward"></use>
         </svg>
       </button>
     </div>
 
-    <div class="swiper-pagination"></div>
+    <div class="swiper-pagination feedback-pagination"></div>
   </div>
 </section>
+
       <section class="frequent-questions">
   <div class="container">
     <h2 class="faq-title">Часті питання</h2>
