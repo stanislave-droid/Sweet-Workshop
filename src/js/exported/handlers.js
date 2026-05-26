@@ -8,8 +8,11 @@ import {
 import { getDesserts, postOrder } from '/js/exported/api';
 import { createDessertsMarkup } from '/js/exported/render-functions';
 import { sweetiesCardClasses } from '/js/exported/constants';
-import { showError, checkBoundariesForLoadMoreBtn } from '/js/exported/helpers';
-import { openHeaderMenu, closeHeaderMenu, isHeaderMenuOpen } from '/js/partials/header.js';
+import {
+  openHeaderMenu,
+  closeHeaderMenu,
+  isHeaderMenuOpen,
+} from '/js/partials/header.js';
 import {
   showError,
   checkBoundariesForLoadMoreBtn,
