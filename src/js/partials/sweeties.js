@@ -13,7 +13,7 @@ import { getCategories, getDesserts } from '/js/exported/api';
 import { onCategoryChange } from '/js/exported/handlers';
 import SlimSelect from 'slim-select';
 import 'slim-select/styles';
-import { showError } from '../exported/helpers';
+import { showError } from '/js/exported/helpers';
 
 const slimSelect = new SlimSelect({
   select: sweetiesCategorySelect,
