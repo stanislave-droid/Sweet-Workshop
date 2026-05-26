@@ -87,6 +87,7 @@
   transition: background-color 0.3s ease;
 }
 .swiper-button-disabled {
+  cursor: not-allowed;
   background: #f5fdfd;
 }
 
