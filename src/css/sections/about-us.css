@@ -204,7 +204,7 @@
 }
 
 .about__pagination-bullet--active {
-  background-color: var(--color-neutral-darkest);
+  background-color: rgba(8, 12, 12, 0.7);
 }
 
 .about__pagination-bullet:focus-visible {

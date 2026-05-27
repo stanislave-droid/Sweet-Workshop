@@ -48,6 +48,9 @@ const initAboutSwiper = () => {
       init() {
         slider.classList.add('about__swiper--initialized');
       },
+      destroy() {
+        slider.classList.remove('about__swiper--initialized');
+      },
     },
   });
   window.aboutSwiper = aboutSwiper;
