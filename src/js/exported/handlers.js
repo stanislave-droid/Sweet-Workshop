@@ -129,10 +129,120 @@ export function closeOrder() {
   refs.orderForm.removeEventListener('submit', handlerOrderSubmit);
   document.body.style.overflow = '';
   window.removeEventListener('keydown', onEscKeyPress);
+
+  refs.orderForm.name.removeEventListener('input', handleNameValidation);
+
+  refs.orderForm.phone.removeEventListener('input', handlePhoneValidation);
+
+  refs.orderForm.comment.removeEventListener('input', handleCommentValidation);
 }
 
 export function onBackdropClick(e) {
   if (e.target.classList.contains('order-modal-overlay')) closeOrder();
+}
+
+function validateName(name) {
+  return name.length >= 2 && name.length <= 48;
+}
+
+function validatePhone(phone) {
+  const cleanedPhone = phone.replace(/\D/g, '');
+
+  return cleanedPhone.length === 12;
+}
+
+function validateComment(comment) {
+  return comment.length >= 2 && comment.length <= 256;
+}
+
+export function handleNameValidation(event) {
+  const isValid = validateName(event.target.value.trim());
+
+  // if (isValid) {
+  //   event.target.classList.remove('is-invalid');
+  //   event.target.classList.add('is-valid');
+  // } else {
+  //   event.target.classList.remove('is-valid');
+  //   event.target.classList.add('is-invalid');
+  // }
+
+  const errorElement =
+    event.target.parentElement.querySelector('.order-form-error');
+
+  if (isValid) {
+    event.target.classList.remove('is-invalid');
+    event.target.classList.add('is-valid');
+
+    errorElement.textContent = '';
+    errorElement.classList.remove('visible');
+  } else {
+    event.target.classList.remove('is-valid');
+    event.target.classList.add('is-invalid');
+
+    errorElement.textContent = "Ім'я повинно містити від 2 до 48 символів";
+
+    errorElement.classList.add('visible');
+  }
+}
+
+export function handlePhoneValidation(event) {
+  const isValid = validatePhone(event.target.value.trim());
+
+  // if (isValid) {
+  //   event.target.classList.remove('is-invalid');
+  //   event.target.classList.add('is-valid');
+  // } else {
+  //   event.target.classList.remove('is-valid');
+  //   event.target.classList.add('is-invalid');
+  // }
+
+  const errorElement =
+    event.target.parentElement.querySelector('.order-form-error');
+
+  if (isValid) {
+    event.target.classList.remove('is-invalid');
+    event.target.classList.add('is-valid');
+
+    errorElement.textContent = '';
+    errorElement.classList.remove('visible');
+  } else {
+    event.target.classList.remove('is-valid');
+    event.target.classList.add('is-invalid');
+
+    errorElement.textContent = 'Номер телефону повинен містити 12 цифр';
+
+    errorElement.classList.add('visible');
+  }
+}
+
+export function handleCommentValidation(event) {
+  const isValid = validateComment(event.target.value.trim());
+
+  // if (isValid) {
+  //   event.target.classList.remove('is-invalid');
+  //   event.target.classList.add('is-valid');
+  // } else {
+  //   event.target.classList.remove('is-valid');
+  //   event.target.classList.add('is-invalid');
+  // }
+
+  const errorElement =
+    event.target.parentElement.querySelector('.order-form-error');
+
+  if (isValid) {
+    event.target.classList.remove('is-invalid');
+    event.target.classList.add('is-valid');
+
+    errorElement.textContent = '';
+    errorElement.classList.remove('visible');
+  } else {
+    event.target.classList.remove('is-valid');
+    event.target.classList.add('is-invalid');
+
+    errorElement.textContent = 'Коментар повинен містити від 2 до 256 символів';
+
+    errorElement.classList.add('visible');
+  }
 }
 
 export function handlerOrderSubmit(event) {
@@ -152,7 +262,8 @@ export function handlerOrderSubmit(event) {
 
   // NAME
 
-  if (data.name.length < 2 || data.name.length > 48) {
+  // if (data.name.length < 2 || data.name.length > 48)
+  if (!validateName(data.name)) {
     showOrderError("Ім'я повинно містити від 2 до 48 символів");
 
     return;
@@ -160,7 +271,8 @@ export function handlerOrderSubmit(event) {
 
   // PHONE
 
-  if (data.phone.length !== 12) {
+  // if (data.phone.length !== 12)
+  if (!validatePhone(data.phone)) {
     showOrderError('Номер телефону повинен містити 12 цифр');
 
     return;
@@ -168,7 +280,8 @@ export function handlerOrderSubmit(event) {
 
   // COMMENT
 
-  if (data.comment.length < 2 || data.comment.length > 256) {
+  // if (data.comment.length < 2 || data.comment.length > 256)
+  if (!validateComment(data.comment)) {
     showOrderError('Коментар повинен містити від 2 до 256 символів');
 
     return;
