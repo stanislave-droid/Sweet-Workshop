@@ -174,9 +174,9 @@
   border: 1px solid #080c0c;
   border-radius: 16px;
   padding: 15px;
-  width: 335px;
+  max-width: 335px;
   height: 433px;
-  min-width: 312px;
+  min-width: 280px;
 }
 
 .sweeties-dessert-img {
