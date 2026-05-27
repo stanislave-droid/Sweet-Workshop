@@ -8,13 +8,13 @@ refs.headerMenu.addEventListener('click', handleHeaderMenuClick);
 
 export function openHeaderMenu() {
   refs.headerMenu.classList.add('header--open');
-  refs.body.classList.add('prevent-scrolling');
+  refs.html.classList.add('prevent-scrolling');
   document.addEventListener('keydown', handleHeaderMenuEscape);
 }
 
 export function closeHeaderMenu() {
   refs.headerMenu.classList.remove('header--open');
-  refs.body.classList.remove('prevent-scrolling');
+  refs.html.classList.remove('prevent-scrolling');
   document.removeEventListener('keydown', handleHeaderMenuEscape);
 }
 
