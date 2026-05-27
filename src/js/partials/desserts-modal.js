@@ -29,8 +29,12 @@ function clearModalData() {
   if (refs.orderBtn) refs.orderBtn.removeAttribute('data-id');
 }
 
+let isModalLoading = false;
+
 export async function openDessertModal(id) {
+  if (isModalLoading) return;
   try {
+    isModalLoading = true;
     const dessertData = await getDessert(id);
 
     fillModalWithData(dessertData);
@@ -47,6 +51,8 @@ export async function openDessertModal(id) {
     showError(
       'На жаль, не вдалося завантажити дані про цей десерт. Спробуйте пізніше.'
     );
+  } finally {
+    isModalLoading = false; // Вимикаємо захист у будь-якому випадку (успіх чи помилка)
   }
 }
 
@@ -80,5 +86,4 @@ if (refs.closeBtn) {
   });
 }
 
-// refs.popularList.addEventListener('click', handlerButton);
 sweetiesDessertsList.addEventListener('click', handlerButton);
