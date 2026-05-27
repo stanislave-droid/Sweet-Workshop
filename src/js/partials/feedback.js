@@ -33,12 +33,10 @@ function initFeedbackSlider() {
     },
 
     pagination: {
-      el: '.swiper-pagination',
+      el: '.feedback-pagination',
       clickable: true,
       dynamicBullets: true,
-      dynamicMainBullets: 4,
-      bulletClass: 'swiper-pagination-bullet',
-      bulletActiveClass: 'swiper-pagination-bullet-active',
+      dynamicMainBullets: 6,
     },
   });
 }
