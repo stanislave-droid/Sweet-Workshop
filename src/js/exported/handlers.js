@@ -21,6 +21,7 @@ import {
 } from '/js/exported/helpers';
 import { openDessertModal, closeModal } from '/js/partials/desserts-modal';
 import { openModal, currentDessertId } from '/js/partials/order-modal';
+import { slimSelect } from '/js/partials/sweeties.js';
 
 let pageCount = 1;
 let categoryId;
@@ -28,6 +29,10 @@ let categoryId;
 export function onCategoryChange(id) {
   sweetiesDessertsLoader.classList.remove('hide-sweeties-loader');
   sweetiesCategoryLoader.classList.remove('hide-sweeties-loader');
+
+  slimSelect.setSelected(id);
+  document.getElementById(!id ? 'sweeties-radio' : id).checked = true;
+
   getDesserts(1, id)
     .then(({ desserts, ...args }) => {
       sweetiesDessertsList.innerHTML = createDessertsMarkup(
