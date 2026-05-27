@@ -97,7 +97,7 @@ body.prevent-scrolling {
   }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1440px) {
   .header-menu__list {
     gap: 32px;
   }
