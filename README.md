@@ -47,7 +47,7 @@ Scrum master - <a href="https://github.com/Guijeen">Evgen Guijeen</a>
 <h2>FEEDBACK</h2>
 <p>The main element of that section is a swiper with dynamically loaded feedback from users, telling us about users and customers stories of relationships with the company.</p>
 
-<img width="455" height="178" alt="image" src="https://github.com/user-attachments/assets/36294be0-9d7a-48ef-97eb-43d45bc02e64" />
+<img width="946" height="402" alt="image" src="https://github.com/user-attachments/assets/a787beb0-49ba-4de2-8c36-2da8cbf43f41" />
 
 <h2>FAQ</h2>
 <p>Displays frequently asked questions from users and customers and provides the answers for them.</p>
