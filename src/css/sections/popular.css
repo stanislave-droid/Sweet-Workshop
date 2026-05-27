@@ -3,7 +3,7 @@
 }
 
 .popular-title {
-  padding-bottom: 32px;
+  margin-bottom: 32px;
 }
 
 .popular-card.swiper-slide {
@@ -59,7 +59,6 @@
 }
 
 .popular-content-header {
-  width: 303px;
   height: 106px;
   margin-bottom: 8px;
 }
