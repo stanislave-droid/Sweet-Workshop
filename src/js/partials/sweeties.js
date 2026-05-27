@@ -15,7 +15,7 @@ import SlimSelect from 'slim-select';
 import 'slim-select/styles';
 import { showError } from '/js/exported/helpers';
 
-const slimSelect = new SlimSelect({
+export const slimSelect = new SlimSelect({
   select: sweetiesCategorySelect,
   events: {
     afterChange: ([{ value }]) => {
