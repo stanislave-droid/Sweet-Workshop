@@ -42,7 +42,7 @@ Scrum master - <a href="https://github.com/Guijeen">Evgen Guijeen</a>
 <h2>ABOUT US</h2>
 <p>Section telling us about the company and what exactly it provides for its customers, equiped with a swiper for desktop and tablet users.</p>
 
-<img width="454" height="272" alt="image" src="https://github.com/user-attachments/assets/53b63e01-f53e-427d-864e-e5a9b783c9be" />
+<img width="926" height="524" alt="image" src="https://github.com/user-attachments/assets/078d1f3f-5ca2-441d-bdb1-db1db4e2a9a9" />
 
 <h2>FEEDBACK</h2>
 <p>The main element of that section is a swiper with dynamically loaded feedback from users, telling us about users and customers stories of relationships with the company.</p>
