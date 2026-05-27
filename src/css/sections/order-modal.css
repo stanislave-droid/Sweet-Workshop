@@ -43,9 +43,6 @@ body {
 
   overflow-y: auto;
   overflow-x: hidden;
-
-  /* overflow: auto;
-  scrollbar-gutter: stable; */
 }
 
 .order-modal-close-btn {
@@ -187,10 +184,34 @@ body {
   pointer-events: none;
 }
 
-/* html.modal-open,
-body.modal-open {
-  overflow: hidden;
-} */
+.order-form-input.is-invalid,
+.order-form-textarea.is-invalid {
+  border-color: red;
+}
+
+.order-form-input.is-valid,
+.order-form-textarea.is-valid {
+  border-color: green;
+}
+
+.order-form-error {
+  margin-top: 4px;
+
+  font-size: 12px;
+  line-height: 1.3;
+
+  color: #d64040;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition: opacity 250ms ease;
+}
+
+.order-form-error.visible {
+  opacity: 1;
+  visibility: visible;
+}
 
 /* Tablet */
 
@@ -206,7 +227,6 @@ body.modal-open {
 
   .order-form-submit-btn {
     width: 344px;
-    /* height: 44px; */
 
     margin: 0 auto;
   }

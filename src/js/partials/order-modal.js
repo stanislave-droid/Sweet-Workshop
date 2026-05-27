@@ -4,6 +4,9 @@ import {
   closeOrder,
   onEscKeyPress,
   onBackdropClick,
+  handleNameValidation,
+  handlePhoneValidation,
+  handleCommentValidation,
 } from '/js/exported/handlers.js';
 
 export let currentDessertId = null;
@@ -16,4 +19,10 @@ export function openModal(id) {
   currentDessertId = id;
   window.addEventListener('keydown', onEscKeyPress);
   refs.modalOverlay.addEventListener('click', onBackdropClick);
+
+  refs.orderForm.name.addEventListener('input', handleNameValidation);
+
+  refs.orderForm.phone.addEventListener('input', handlePhoneValidation);
+
+  refs.orderForm.comment.addEventListener('input', handleCommentValidation);
 }
