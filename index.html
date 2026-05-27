@@ -21,7 +21,7 @@
     <script type="module" crossorigin src="/Sweet-Workshop/index.js"></script>
     <link rel="modulepreload" crossorigin href="/Sweet-Workshop/assets/vendor-Cg5bmoNx.js">
     <link rel="stylesheet" crossorigin href="/Sweet-Workshop/assets/vendor-C15eHn7x.css">
-    <link rel="stylesheet" crossorigin href="/Sweet-Workshop/assets/index-BUiROWA9.css">
+    <link rel="stylesheet" crossorigin href="/Sweet-Workshop/assets/index-C3giyHSW.css">
   </head>
   <body>
     <header class="header">
@@ -636,6 +636,18 @@
     <h2 class="order-modal-title">Оформлення замовлення</h2>
 
     <form class="order-form">
+      <!-- <label class="order-form-label">
+        Ім’я*
+        <input
+          type="text"
+          name="name"
+          class="order-form-input"
+          placeholder="Вікторія"
+          required
+          minlength="2"
+        />
+      </label> -->
+
       <label class="order-form-label">
         Ім’я*
         <input
@@ -646,6 +658,8 @@
           required
           minlength="2"
         />
+
+        <span class="order-form-error"></span>
       </label>
 
       <label class="order-form-label">
@@ -657,6 +671,8 @@
           placeholder="38 0__ _______"
           required
         />
+
+        <span class="order-form-error"></span>
       </label>
 
       <label class="order-form-label">
@@ -666,6 +682,8 @@
           class="order-form-textarea"
           placeholder="Ваш коментар"
         ></textarea>
+
+        <span class="order-form-error"></span>
       </label>
 
       <button type="submit" class="order-form-submit-btn">
