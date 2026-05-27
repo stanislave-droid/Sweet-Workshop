@@ -140,29 +140,27 @@ body.modal-open {
 .order-btn {
   display: inline-block;
   width: 100%;
-  border: 1px solid #f19898;
-  border-radius: 100px;
-  padding: 10px 24px;
   max-width: 295px;
   height: 44px;
-  background-color: #f19898;
+  padding: 10px 24px;
+  margin-top: 24px;
   font-weight: 500;
   font-size: 16px;
   color: #080c0c;
-  border: none;
-  border-radius: 30px;
   cursor: pointer;
   text-align: center;
+  background-color: #f19898;
+  border-radius: 30px;
+  border: 2px solid transparent;
   transition:
     background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  margin-top: 24px;
+    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .order-btn:hover,
 .order-btn:focus {
   background-color: #f5fdfd;
-  border: 2px solid #080c0c;
+  border-color: #080c0c;
   outline: none;
 }
 
