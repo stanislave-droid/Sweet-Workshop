@@ -82,7 +82,6 @@ body.modal-open {
 .modal-thumb {
   flex-shrink: 0;
   width: 100%;
-  width: 295px;
   height: 221px;
   border-radius: 16px;
   overflow: hidden;

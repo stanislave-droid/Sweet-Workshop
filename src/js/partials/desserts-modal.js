@@ -13,12 +13,28 @@ function fillModalWithData(dessert) {
   refs.modalPrice.textContent = `${dessert.price} грн`;
   refs.modalDescription.textContent = dessert.description;
   refs.modalIngredients.textContent = dessert.composition;
-
   refs.orderBtn.dataset.id = dessert._id || dessert.id;
 }
 
+function clearModalData() {
+  if (refs.modalImg) {
+    refs.modalImg.src = '';
+    refs.modalImg.alt = '';
+  }
+  if (refs.modalReitStars) refs.modalReitStars.innerHTML = '';
+  if (refs.modalTitle) refs.modalTitle.textContent = '';
+  if (refs.modalPrice) refs.modalPrice.textContent = '';
+  if (refs.modalDescription) refs.modalDescription.textContent = '';
+  if (refs.modalIngredients) refs.modalIngredients.textContent = '';
+  if (refs.orderBtn) refs.orderBtn.removeAttribute('data-id');
+}
+
+let isModalLoading = false;
+
 export async function openDessertModal(id) {
+  if (isModalLoading) return;
   try {
+    isModalLoading = true;
     const dessertData = await getDessert(id);
 
     fillModalWithData(dessertData);
@@ -35,27 +51,39 @@ export async function openDessertModal(id) {
     showError(
       'На жаль, не вдалося завантажити дані про цей десерт. Спробуйте пізніше.'
     );
+  } finally {
+    isModalLoading = false; // Вимикаємо захист у будь-якому випадку (успіх чи помилка)
   }
 }
 
 export function closeModal() {
   document.body.classList.remove('modal-open');
   refs.overlay.classList.add('is-hidden');
-
   window.removeEventListener('keydown', onEscKeyPress);
   refs.overlay.removeEventListener('click', onBackdropClick);
   refs.orderBtn.removeEventListener('click', handlerOrderButton);
+  clearModalData();
 }
 
 function onEscKeyPress(e) {
-  if (e.code === 'Escape') closeModal();
+  if (e.code === 'Escape') {
+    document.body.classList.remove('modal-open');
+    closeModal();
+  }
 }
 
 function onBackdropClick(e) {
-  if (e.target === refs.overlay) closeModal();
+  if (e.target === refs.overlay) {
+    document.body.classList.remove('modal-open');
+    closeModal();
+  }
 }
 
-refs.closeBtn.addEventListener('click', closeModal);
+if (refs.closeBtn) {
+  refs.closeBtn.addEventListener('click', e => {
+    document.body.classList.remove('modal-open');
+    closeModal();
+  });
+}
 
-// refs.popularList.addEventListener('click', handlerButton);
 sweetiesDessertsList.addEventListener('click', handlerButton);
